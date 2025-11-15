@@ -24,6 +24,9 @@ refs:
 - ECMA-335_6th_edition_june_2012 III.1.7.1, III.1.8
 - en.wikipedia.org/wiki/Common_Intermediate_Language
 
-
 ### Common Type System (CTS)
+The CTS is a model type system that defines the rules the CLI follows when interacting with types. It establishes cross-language integration enabled framework shared by the CLI, tools, and compilers. The CTS supports object-oriented programming, and as such it deals with both values and objects. Values are simple types composed of bit patterns for things like integers and floats. Objects are store their type in their own representation and can store other entities, which can be values or more objects. The CTS also has a feature called generics that allows a pattern to be used to define a whole family of types and methods, including having generic parameters than can be replaced with specific types when needed. Generics are designed to be language and implementation independant. 
+
+refs:
+- ECMA-335_6th_edition_june_2012 I.5, I.8
 
