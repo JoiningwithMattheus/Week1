@@ -5,11 +5,6 @@ public class TextMenu : IMenu
 {
     public override IList<string> OperationsHelp { get; set; }
 
-    public TextMenu(IList<string> operationsHelp)
-    {
-        OperationsHelp = operationsHelp ?? new List<string>();
-    }
-
     public override void ShowMenu()
     {
         Console.WriteLine("Enter an RPN expression to evaluate.");
