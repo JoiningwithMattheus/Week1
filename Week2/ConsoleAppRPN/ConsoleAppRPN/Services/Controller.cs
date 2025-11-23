@@ -6,6 +6,9 @@ class Controller {
     public Controller(ICalculator calc, IParser parser, IMenu menu) {...}
     // the main run loop that accepts user input in a loop
     public void Run() {
+        IMenu Menu = _menu;
+        IParser Parser = _parser;
+        ICalculator Calculator = _calc;
         Menu.ShowMenu();
         var input = string.Empty;
         

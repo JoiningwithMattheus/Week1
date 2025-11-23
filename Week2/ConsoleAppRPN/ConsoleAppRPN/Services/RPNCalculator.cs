@@ -1,4 +1,4 @@
-class RPNCalculator : ICalculator
+public class RPNCalculator : ICalculator
 {
     public IList<string> OperationsHelpText { get; } =
        new IList<string> {"+ - (Addition) adds two numbers",
@@ -11,7 +11,7 @@ class RPNCalculator : ICalculator
         "ln - (Logarithm) calculates the natural logarithm of a number"};
     public IList<string> SupportedOperations { get; } = new IList<string> {
         "+", "-", "*", "/", "^", "sqrt", "exp", "ln"};
-    public double Calculate(IList<Token> express)
+    public override double Calculate(IList<Token> express)
     {
         var stack = new Stack<double>();
         foreach (var token in express)
