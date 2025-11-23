@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Year 2\\Interaction Design\\Week1\\ConsoleAppSerialConnection\\ConsoleAppSerialConnection.csproj": {}
+    "E:\\Year 2\\Q2\\Interaction Design\\Week1\\ConsoleAppSerialConnection\\ConsoleAppSerialConnection.csproj": {}
   },
   "projects": {
-    "E:\\Year 2\\Interaction Design\\Week1\\ConsoleAppSerialConnection\\ConsoleAppSerialConnection.csproj": {
+    "E:\\Year 2\\Q2\\Interaction Design\\Week1\\ConsoleAppSerialConnection\\ConsoleAppSerialConnection.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Year 2\\Interaction Design\\Week1\\ConsoleAppSerialConnection\\ConsoleAppSerialConnection.csproj",
+        "projectUniqueName": "E:\\Year 2\\Q2\\Interaction Design\\Week1\\ConsoleAppSerialConnection\\ConsoleAppSerialConnection.csproj",
         "projectName": "ConsoleAppSerialConnection",
-        "projectPath": "E:\\Year 2\\Interaction Design\\Week1\\ConsoleAppSerialConnection\\ConsoleAppSerialConnection.csproj",
+        "projectPath": "E:\\Year 2\\Q2\\Interaction Design\\Week1\\ConsoleAppSerialConnection\\ConsoleAppSerialConnection.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\Year 2\\Interaction Design\\Week1\\ConsoleAppSerialConnection\\obj\\",
+        "outputPath": "E:\\Year 2\\Q2\\Interaction Design\\Week1\\ConsoleAppSerialConnection\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -49,6 +50,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "System.IO.Ports": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

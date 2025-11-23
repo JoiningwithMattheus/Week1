@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConsoleAppSerialConnection")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d853b308f8fce9f12e6903154f6ff4becc0ed06")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConsoleAppSerialConnection")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConsoleAppSerialConnection")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
