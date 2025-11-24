@@ -43,7 +43,7 @@ public class Parser : IParser
             }
             else
             {
-                throw new ArgumentException($"Invalid token: '{token}'");
+                throw new FormatException($"Invalid token: '{token}'");
             }
         }
 
