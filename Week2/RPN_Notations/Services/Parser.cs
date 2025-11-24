@@ -7,9 +7,9 @@ public class Parser : IParser
         SupportedOperators = new List<string>();
     }
 
-    public Parser(IList<string> supportedOperators)
+    public Parser(RPNCalculator calculator)
     {
-        SupportedOperators = supportedOperators ?? new List<string>();
+        SupportedOperators = calculator.SupportedOperators ?? new List<string>();
     }
 
     public override IList<string> Tokenize(string expression)

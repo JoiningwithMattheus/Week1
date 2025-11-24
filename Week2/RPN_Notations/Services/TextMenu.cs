@@ -3,11 +3,8 @@ using System.Collections.Generic;
 
 public class TextMenu : IMenu
 {
-    private RPNCalculator calculator { get; set; }
-
     public TextMenu(RPNCalculator calculator)
     {
-        this.calculator = calculator;
         OperationsHelp = calculator.OperationsHelpText;
     }
 

@@ -6,10 +6,9 @@ class Program
     static void Main(string[] args)
     {
         // Setup dependencies
-        var supportedOperators = new List<string> { "+", "-", "*", "/", "sqrt", "exp", "ln" };
-        var parser = new Parser(supportedOperators);
         var calculator = new RPNCalculator();
         var menu = new TextMenu(calculator);
+        var parser = new Parser(calculator);
         
         // Create and run the controller
         var controller = new Controller(calculator, parser, menu);
