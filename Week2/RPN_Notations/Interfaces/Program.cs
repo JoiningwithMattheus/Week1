@@ -7,8 +7,8 @@ class Program
     {
         // Setup dependencies
         var calculator = new RPNCalculator();
-        var menu = new TextMenu(calculator);
-        var parser = new Parser(calculator);
+        var menu = new TextMenu(calculator.OperationsHelpText);
+        var parser = new Parser(calculator.SupportedOperators);
         
         // Create and run the controller
         var controller = new Controller(calculator, parser, menu);

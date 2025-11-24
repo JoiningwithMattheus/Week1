@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RPN_Notations")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43618c4afd228f815d959197a129d34fb2b93947")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a10c67039cd35d5e11cbe266630e9f1d7bee936")]
 [assembly: System.Reflection.AssemblyProductAttribute("RPN_Notations")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RPN_Notations")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

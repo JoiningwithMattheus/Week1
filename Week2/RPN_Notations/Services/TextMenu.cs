@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class TextMenu : IMenu
 {
-    public TextMenu(RPNCalculator calculator)
+    public TextMenu(IList<string> operationsHelp)
     {
-        OperationsHelp = calculator.OperationsHelpText;
+        OperationsHelp = operationsHelp;
     }
 
     public override IList<string> OperationsHelp { get; set; }
