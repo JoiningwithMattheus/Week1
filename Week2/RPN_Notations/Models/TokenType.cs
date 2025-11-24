@@ -1,5 +1,5 @@
 public enum TokenType
 {
     Number,
-    Operation
+    Operator
 }

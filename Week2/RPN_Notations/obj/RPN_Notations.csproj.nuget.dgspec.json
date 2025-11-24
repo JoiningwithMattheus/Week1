@@ -1,29 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week2\\ConsoleAppRPN\\ConsoleAppRPN\\ConsoleAppRPN.csproj": {}
+    "E:\\Year 2\\Q2\\Interaction Design\\Week2\\RPN_Notations\\RPN_Notations.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week2\\ConsoleAppRPN\\ConsoleAppRPN\\ConsoleAppRPN.csproj": {
+    "E:\\Year 2\\Q2\\Interaction Design\\Week2\\RPN_Notations\\RPN_Notations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week2\\ConsoleAppRPN\\ConsoleAppRPN\\ConsoleAppRPN.csproj",
-        "projectName": "ConsoleAppRPN",
-        "projectPath": "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week2\\ConsoleAppRPN\\ConsoleAppRPN\\ConsoleAppRPN.csproj",
-        "packagesPath": "C:\\Users\\ErikW\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week2\\ConsoleAppRPN\\ConsoleAppRPN\\obj\\",
+        "projectUniqueName": "E:\\Year 2\\Q2\\Interaction Design\\Week2\\RPN_Notations\\RPN_Notations.csproj",
+        "projectName": "RPN_Notations",
+        "projectPath": "E:\\Year 2\\Q2\\Interaction Design\\Week2\\RPN_Notations\\RPN_Notations.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\Year 2\\Q2\\Interaction Design\\Week2\\RPN_Notations\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ErikW\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -64,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

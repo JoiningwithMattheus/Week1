@@ -1,6 +1,6 @@
 public class Parser : IParser
 {
-    public IList<string> SupportedOperators { get; set; }
+    public override IList<string> SupportedOperators {get; set;}
 
     public Parser()
     {
@@ -19,10 +19,10 @@ public class Parser : IParser
             return new List<string>();
         }
         
-        return expression.split(' ').toList();
+        return expression.Split(' ').ToList();
     }
 
-    public override IList<Token> Lex(IList<string> expression)
+    public override IList<Token> Lex(IList<string> tokens)
     {
         if (tokens == null)
         {
@@ -35,11 +35,11 @@ public class Parser : IParser
         {
             if (SupportedOperators.Contains(token))
             {
-                result.Add(new Token(TokenType.Operator, token));
+                result.Add(new Token(token, TokenType.Operator));
             }
             else if (double.TryParse(token, out double numericValue))
             {
-                result.Add(new Token(TokenType.Number, token, numericValue));
+                result.Add(new Token(token, TokenType.Number));
             }
             else
             {

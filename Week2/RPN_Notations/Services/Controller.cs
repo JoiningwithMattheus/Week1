@@ -3,7 +3,12 @@ class Controller {
     private ICalculator _calc;
     private IParser _parser;
     private IMenu _menu;
-    public Controller(ICalculator calc, IParser parser, IMenu menu) {...}
+    public Controller(ICalculator calc, IParser parser, IMenu menu)
+    {
+        _calc = calc;
+        _parser = parser;
+        _menu = menu;
+    }
     // the main run loop that accepts user input in a loop
     public void Run() {
         IMenu Menu = _menu;

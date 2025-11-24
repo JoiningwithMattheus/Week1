@@ -1,0 +1,14 @@
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\obj\Debug\net9.0\RPN_Notations.GeneratedMSBuildEditorConfig.editorconfig
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\obj\Debug\net9.0\RPN_Notations.AssemblyInfoInputs.cache
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\obj\Debug\net9.0\RPN_Notations.AssemblyInfo.cs
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\obj\Debug\net9.0\RPN_Notations.csproj.CoreCompileInputs.cache
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\bin\Debug\net9.0\RPN_Notations.exe
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\bin\Debug\net9.0\RPN_Notations.deps.json
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\bin\Debug\net9.0\RPN_Notations.runtimeconfig.json
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\bin\Debug\net9.0\RPN_Notations.dll
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\bin\Debug\net9.0\RPN_Notations.pdb
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\obj\Debug\net9.0\RPN_Notations.dll
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\obj\Debug\net9.0\refint\RPN_Notations.dll
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\obj\Debug\net9.0\RPN_Notations.pdb
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\obj\Debug\net9.0\RPN_Notations.genruntimeconfig.cache
+E:\Year 2\Q2\Interaction Design\Week2\RPN_Notations\obj\Debug\net9.0\ref\RPN_Notations.dll

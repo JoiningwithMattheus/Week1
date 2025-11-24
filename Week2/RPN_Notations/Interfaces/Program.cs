@@ -1,11 +1,12 @@
-﻿namespace ConsoleAppRPN;
+﻿using System;
+namespace RPN_Notations;
 
 class Program
 {
     static void Main(string[] args)
     {
         // Setup dependencies
-        var supportedOperators = new List<string> { "+", "-", "*", "/", "sqrt" };
+        var supportedOperators = new List<string> { "+", "-", "*", "/", "sqrt", "exp", "ln" };
         var parser = new Parser(supportedOperators);
         var calculator = new RPNCalculator();
         var menu = new TextMenu(calculator);
@@ -15,3 +16,7 @@ class Program
         controller.Run();
     }
 }
+
+
+
+
