@@ -1,7 +1,11 @@
 public class RPNCalculator : ICalculator
 {
-    public override IList<string> OperationsHelpText { get; } =
-       new List<string> {"+ - (Addition) adds two numbers",
+    public override IList<string> OperationsHelpText { get; }
+    public override IList<string> SupportedOperators { get; }
+    public RPNCalculator()
+    {
+        OperationsHelpText =
+          new List<string> {"+ - (Addition) adds two numbers",
         "- - (Subtraction) subtracts two numbers",
         "* - (Multiplication) multiplies two numbers",
         "/ - (Division) calculates the fraction of two numbers",
@@ -9,8 +13,9 @@ public class RPNCalculator : ICalculator
         "sqrt - (SquareRoot) calculates the square root of a number",
         "exp - (Exponentiation) calculates the exponent with the natural base e",
         "ln - (Logarithm) calculates the natural logarithm of a number"};
-    public override IList<string> SupportedOperators { get; } = new List<string> {
+        SupportedOperators = new List<string> {
         "+", "-", "*", "/", "^", "sqrt", "exp", "ln"};
+    }
     public override double Calculate(IList<Token> express)
     {
         var stack = new Stack<double>();
