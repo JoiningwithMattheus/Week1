@@ -38,6 +38,25 @@ class Graduation_internship {
 }
 Graduation_internship <|- Internship
 
+class Assignment {
+
+}
+
+class Research_assignment {
+
+}
+Research_assignment <|- Assignment
+
+class Minor_assignment {
+
+}
+Minor_assignment <|- Assignment
+
+class Engineering_assignment {
+
+}
+Engineering_assignment <|- Assignment
+
 class Student {
 
 }
