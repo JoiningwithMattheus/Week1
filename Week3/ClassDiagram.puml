@@ -59,13 +59,19 @@ class Engineering_assignment {
 }
 Engineering_assignment <|- Assignment
 
+class IPerson{
+
+}
+
 class Student {
 
 }
+Student <|. IPerson
 
 class Contact_person {
 
 }
+Contact_person <|. IPerson
 
 class Minor {
 
