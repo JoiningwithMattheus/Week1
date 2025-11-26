@@ -60,6 +60,8 @@ class Engineering_assignment {
 Engineering_assignment <|- Assignment
 
 class IPerson{
+    firstName : string
+    lastName : string
 
 }
 
