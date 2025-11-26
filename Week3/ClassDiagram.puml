@@ -1,0 +1,15 @@
+@startuml SIS
+
+class Organization {
+
+}
+
+class Internship {
+
+}
+
+class Student {
+
+}
+
+@enduml
