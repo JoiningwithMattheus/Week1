@@ -73,11 +73,6 @@ class Contact_person {
 }
 Contact_person <|. IPerson
 
-class Coordinator {
-
-}
-Coordinator <|. IPerson
-
 class Minor {
 
 }
