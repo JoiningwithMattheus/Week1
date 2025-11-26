@@ -32,6 +32,7 @@ class Minor_internship {
 
 }
 Minor_internship <|- Internship
+Minor_internship o- Minor
 
 class Graduation_internship {
 
@@ -51,6 +52,7 @@ class Minor_assignment {
 
 }
 Minor_assignment <|- Assignment
+Minor_assignment o- Minor
 
 class Engineering_assignment {
 
@@ -62,7 +64,10 @@ class Student {
 }
 
 class Contact_person {
-    
+
 }
 
+class Minor {
+
+}
 @enduml
