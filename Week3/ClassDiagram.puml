@@ -61,4 +61,8 @@ class Student {
 
 }
 
+class Contact_person {
+    
+}
+
 @enduml
