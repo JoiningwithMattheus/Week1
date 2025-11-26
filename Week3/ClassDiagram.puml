@@ -4,9 +4,39 @@ class Organization {
 
 }
 
+class Company {
+
+}
+Company <|- Organization
+
+class Research_group{
+
+}
+Research_group <|- Organization
+
+class Educational_institute{
+
+}
+Educational_institute <|- Organization
+
 class Internship {
 
 }
+
+class Intermediate_internship {
+
+}
+Intermediate_internship <|- Internship
+
+class Minor_internship {
+
+}
+Minor_internship <|- Internship
+
+class Graduation_internship {
+
+}
+Graduation_internship <|- Internship
 
 class Student {
 
