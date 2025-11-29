@@ -1,6 +1,13 @@
 @startuml SIS
 
 class Organization {
+    name : string
+    address : string
+    phoneNumber : string
+    email : string
+    url : string
+    contact : Contact_person
+    identifier : int
 
 }
 
@@ -78,6 +85,7 @@ class Contact_person {
 
 }
 Contact_person <|. IPerson
+Contact_person 1 o- 1 Organization
 
 class Minor {
 
