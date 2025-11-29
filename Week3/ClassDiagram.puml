@@ -71,6 +71,10 @@ class Student {
 Student <|. IPerson
 
 class Contact_person {
+    functionTitle : string
+    email : string
+    phoneNumber : string
+    departmentName : string
 
 }
 Contact_person <|. IPerson
