@@ -36,10 +36,10 @@ class Intermediate_internship {
 Intermediate_internship <|- Internship
 
 class Minor_internship {
+    minor : Minor
 
 }
 Minor_internship <|- Internship
-Minor_internship o- Minor
 
 class Graduation_internship {
 
@@ -56,10 +56,10 @@ class Research_assignment {
 Research_assignment <|- Assignment
 
 class Minor_assignment {
+    minor : Minor
 
 }
 Minor_assignment <|- Assignment
-Minor_assignment o- Minor
 
 class Engineering_assignment {
 
@@ -85,9 +85,13 @@ class Contact_person {
 
 }
 Contact_person <|. IPerson
-Contact_person 1 o- 1 Organization
+Contact_person o- Organization
 
 class Minor {
+    moduleName : string
 
 }
+Minor o- Minor_internship
+Minor o- Minor_assignment
+
 @enduml
