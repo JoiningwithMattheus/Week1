@@ -26,45 +26,48 @@ class Educational_institute{
 }
 Educational_institute <|- Organization
 
+class Period {
+    year : int
+    semester : int     '1 or 2
+}
+
 class Internship {
-
+    dateOfSubmission : DateTime
+    projectTitle : string
+    shortDescription : string
+    longDescription : string
+    finalGrade : float?
+    status : InternshipStatus
 }
 
-class Intermediate_internship {
+Internship --> Period
 
-}
-Intermediate_internship <|- Internship
+class Intermediate_internship
 
 class Minor_internship {
     minor : Minor
-
 }
-Minor_internship <|- Internship
 
-class Graduation_internship {
+class Graduation_internship 
 
-}
-Graduation_internship <|- Internship
+Internship <|-- Intermediate_internship
+Internship <|-- Minor_internship
+Internship <|-- Graduation_internship
 
 class Assignment {
-
+    description : string
 }
 
-class Research_assignment {
-
-}
-Research_assignment <|- Assignment
-
+class Research_assignment
 class Minor_assignment {
     minor : Minor
-
 }
-Minor_assignment <|- Assignment
 
-class Engineering_assignment {
+class Engineering_assignment
 
-}
-Engineering_assignment <|- Assignment
+Assignment <|-- Research_assignment
+Assignment <|-- Minor_assignment
+Assignment <|-- Engineering_assignment
 
 class IPerson{
     firstName : string
@@ -93,5 +96,24 @@ class Minor {
 }
 Minor o- Minor_internship
 Minor o- Minor_assignment
+
+class Application {
+    applicationId : int
+    submittedAt : Date
+    status : ApplicationStatus
+}
+
+enum ApplicationStatus {
+    SUBMITTED
+    APPROVED
+    REJECTED
+}
+
+Student "1" o-- "0..*" Application
+Application "0..*" --> "1" Internship
+Application "0..*" --> "1" Assignment
+
+Intership o-- Student
+Student --> Assignment
 
 @enduml
