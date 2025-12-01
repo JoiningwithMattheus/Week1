@@ -70,7 +70,7 @@ Assignment <|-- Research_assignment
 Assignment <|-- Minor_assignment
 Assignment <|-- Engineering_assignment
 
-class IPerson{
+interface IPerson{
     firstName : string
     lastName : string
 
