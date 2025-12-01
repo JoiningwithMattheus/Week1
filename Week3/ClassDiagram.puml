@@ -57,6 +57,7 @@ Internship <|-- Graduation_internship
 class Assignment {
     description : string
 }
+Assignment o- Student
 
 class Research_assignment
 class Minor_assignment {
@@ -76,6 +77,8 @@ class IPerson{
 }
 
 class Student {
+    studentNumber : uint
+    assignment : Assignment
 
 }
 Student <|. IPerson
