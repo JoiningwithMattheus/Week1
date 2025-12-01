@@ -58,96 +58,79 @@ IPerson <|-- Coordinator
 
 
 class Organization {
-    Id: string
+    Id: int
     name : string
     address : string
     phoneNumber : string
     email : string
     url : string
     contact : Contact_person
-    identifier : int
+    +GetIdentifer() : int
 }
 
 class Contact_person {
-    Contact_person(personalInfo: IPerson)
     functionTitle : string
     departmentName : string
+    + Contact_person(firstName : string, lastName : string, email : string, phoneNumber : string, functionTitle : string, departmentName : string)
+    + GetContactInfo() : string
 }
 
-class Company {
+IPerson <|-- Contact_person
 
-}
-Company <|- Organization
+class Company
+class Research_group
+class Educational_institute
 
-class Research_group{
-
-}
-Research_group <|- Organization
-
-class Educational_institute{
-
-}
-Educational_institute <|- Organization
+Organization <|-- Company
+Organization <|-- Research_group
+Organization <|-- Educational_institute
 
 class Period {
-    year : int
-    semester : int     '1 or 2
+    - year : int
+    - semester : int  ' 1 or 2
+}
+
+enum InternshipCategory {
+    INTERMEDIATE
+    MINOR
+    GRADUATION
 }
 
 class Internship {
-    dateOfSubmission : DateTime
-    projectTitle : string
-    shortDescription : string
-    longDescription : string
-    finalGrade : float
-    status : InternshipStatus
+    - id : int
+    - dateOfSubmission : DateTime
+    - projectTitle : string
+    - shortDescription : string
+    - longDescription : string
+    - finalGrade : float
+    - status : InternshipStatus
+    - capacity : int      
+    - assignedStudents : List<Student>
+
+    + GetOverview() : string
+}
+
+enum InternshipStatus {
+    OPEN
+    WITHDRAWN
+    ASSIGNED
+    COMPLETED
 }
 
 Internship --> Period
+Internship --> Organization
 
-class Intermediate_internship
+Internship "1" o-- "1..*" Contact_person : contactPersons
 
-class Minor_internship {
-    minor : Minor
-}
-
-class Graduation_internship
-
-Internship <|-- Intermediate_internship
-Internship <|-- Minor_internship
-Internship <|-- Graduation_internship
-
-class Assignment {
-    description : string
-}
-Assignment o- Student
-
-class Research_assignment
-class Minor_assignment {
-    minor : Minor
-}
-
-class Engineering_assignment
-
-Assignment <|-- Research_assignment
-Assignment <|-- Minor_assignment
-Assignment <|-- Engineering_assignment
-
-Student <|. IPerson
-
-Contact_person <|. IPerson
-Contact_person o- Organization
-
-class Minor {
-    moduleName : string
-}
-Minor <-- Minor_internship
-Minor o- Minor_assignment
+Organization "1" o-- "0..*" Internship : internships
 
 class Application {
-    applicationId : int
-    submittedAt : Date
-    status : ApplicationStatus
+    - applicationId : int
+    - submittedAt : DateTime
+    - status : ApplicationStatus
+    - motivation : string
+
+    + GetSummary() : string
 }
 
 enum ApplicationStatus {
@@ -156,12 +139,38 @@ enum ApplicationStatus {
     REJECTED
 }
 
-ApplicationStatus <-- Application
-
-Student "1" o-- "0..*" Application
+Student "1" o-- "0..*" Application : applications
 Application "0..*" --> "1" Internship
+Application "0..*" --> "1" Student
 
-Intership o-- Student
-Student --> Assignment
+class Assignment {
+    - description : string
+    + GetDescription() : string
+}
+Assignment o-- Student
+
+class Research_assignment
+class Minor_assignment {
+    - minor : Minor
+}
+class Engineering_assignment
+
+Assignment <|-- Research_assignment
+Assignment <|-- Minor_assignment
+Assignment <|-- Engineering_assignment
+
+class Minor {
+    - moduleName : string
+}
+Minor <-- Minor_internship
+Minor o- Minor_assignment
+
+class Intermediate_internship
+class Minor_internship
+class Graduation_internship
+
+Internship <|-- Intermediate_internship
+Internship <|-- Minor_internship
+Internship <|-- Graduation_internship
 
 @enduml
