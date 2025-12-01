@@ -97,8 +97,8 @@ class Minor {
     moduleName : string
 
 }
-Minor o- Minor_internship
-Minor o- Minor_assignment
+Minor <- Minor_internship
+Minor <- Minor_assignment
 
 class Application {
     applicationId : int
@@ -115,7 +115,7 @@ enum ApplicationStatus {
 Student "1" o-- "0..*" Application
 Application "0..*" --> "1" Internship
 
-Intership o-- Student
+Internship o-- Student
 Student --> Assignment
 
 @enduml
