@@ -1,6 +1,64 @@
 @startuml SIS
 
+interface IUser{
+    +Login() : bool
+    +ShowMenu() : void
+}
+
+abstract class IPerson{
+    -firstName : string
+    -lastName : string
+    -email : string
+    -phoneNumber : string
+    +GetFullName() : string
+}
+
+class Student {
+    -studentNumber : uint
+    -applications : List<Application>
+    -assignment : Assignment
+
+    +Student(studentNumber: uint, firstName: string, lastName: string, email : string, phoneNumber:string)
+
+    +GetAvailableInternship(period: Period, category: Internship_Category) : List<Internship>
+    +ApplyForInternship(internship: Internship) : Application
+    +GetApplications() : List<Application>
+    +HasApplied(period : Period) : bool
+
+    +Login(): bool
+    +ShowMenu(): void
+}
+
+class Coordinator {
+    +Coordinator(firstName : string, lastName : string, email : string, phoneNumber : string)
+
+    `return true if approved, false otherwise
+    +ProcessAssignment(application : Application) : 
+    +AssignStudentToInternship(student : Student, internship : Internship) : void
+    +MarkInternshipCompleted(internship : Internship, finalGrade : float) : void
+
+    +AddOrganisation(org : Organization) : bool
+    +RemoveOrganisation(orgId : int) : bool
+    +ListOrganisations() : List<Organization>
+
+    +AddInternship(internship : Internship, orgId : int) : void
+    +WithdrawInternship(internshipId : int) : void
+    +ListInternships(period : Period, category : Internship_Category) : List<Internship>
+    +GetContactPersons(internshipId : int) : List<Contact_person>
+
+    +Login(): bool
+    +ShowMenu(): void
+}
+
+IUser <|.. Student
+IUser <|.. Coordinator
+
+IPerson <|-- Student
+IPerson <|-- Coordinator
+
+
 class Organization {
+    Id: string
     name : string
     address : string
     phoneNumber : string
@@ -8,7 +66,12 @@ class Organization {
     url : string
     contact : Contact_person
     identifier : int
+}
 
+class Contact_person {
+    Contact_person(personalInfo: IPerson)
+    functionTitle : string
+    departmentName : string
 }
 
 class Company {
@@ -36,7 +99,7 @@ class Internship {
     projectTitle : string
     shortDescription : string
     longDescription : string
-    finalGrade : float?
+    finalGrade : float
     status : InternshipStatus
 }
 
@@ -48,7 +111,7 @@ class Minor_internship {
     minor : Minor
 }
 
-class Graduation_internship 
+class Graduation_internship
 
 Internship <|-- Intermediate_internship
 Internship <|-- Minor_internship
@@ -70,34 +133,15 @@ Assignment <|-- Research_assignment
 Assignment <|-- Minor_assignment
 Assignment <|-- Engineering_assignment
 
-class IPerson{
-    firstName : string
-    lastName : string
-
-}
-
-class Student {
-    studentNumber : uint
-    assignment : Assignment
-
-}
 Student <|. IPerson
 
-class Contact_person {
-    functionTitle : string
-    email : string
-    phoneNumber : string
-    departmentName : string
-
-}
 Contact_person <|. IPerson
 Contact_person o- Organization
 
 class Minor {
     moduleName : string
-
 }
-Minor o- Minor_internship
+Minor <-- Minor_internship
 Minor o- Minor_assignment
 
 class Application {
@@ -111,6 +155,8 @@ enum ApplicationStatus {
     APPROVED
     REJECTED
 }
+
+ApplicationStatus <-- Application
 
 Student "1" o-- "0..*" Application
 Application "0..*" --> "1" Internship
