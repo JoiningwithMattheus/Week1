@@ -1,61 +1,5 @@
 @startuml SIS
-
-interface IUser{
-    +Login() : bool
-    +ShowMenu() : void
-}
-
-abstract class IPerson{
-    -firstName : string
-    -lastName : string
-    -email : string
-    -phoneNumber : string
-    +GetFullName() : string
-}
-
-class Student {
-    -studentNumber : uint
-    -applications : List<Application>
-    -assignment : Assignment
-
-    +Student(studentNumber: uint, firstName: string, lastName: string, email : string, phoneNumber:string)
-
-    +GetAvailableInternship(period: Period, category: Internship_Category) : List<Internship>
-    +ApplyForInternship(internship: Internship) : Application
-    +GetApplications() : List<Application>
-    +HasApplied(period : Period) : bool
-
-    +Login(): bool
-    +ShowMenu(): void
-}
-
-class Coordinator {
-    +Coordinator(firstName : string, lastName : string, email : string, phoneNumber : string)
-
-    `return true if approved, false otherwise
-    +ProcessAssignment(application : Application) : 
-    +AssignStudentToInternship(student : Student, internship : Internship) : void
-    +MarkInternshipCompleted(internship : Internship, finalGrade : float) : void
-
-    +AddOrganisation(org : Organization) : bool
-    +RemoveOrganisation(orgId : int) : bool
-    +ListOrganisations() : List<Organization>
-
-    +AddInternship(internship : Internship, orgId : int) : void
-    +WithdrawInternship(internshipId : int) : void
-    +ListInternships(period : Period, category : Internship_Category) : List<Internship>
-    +GetContactPersons(internshipId : int) : List<Contact_person>
-
-    +Login(): bool
-    +ShowMenu(): void
-}
-
-IUser <|.. Student
-IUser <|.. Coordinator
-
-IPerson <|-- Student
-IPerson <|-- Coordinator
-
+skinparam padding 10
 
 class Organization {
     Id: string
@@ -95,6 +39,7 @@ class Period {
 }
 
 class Internship {
+    org : Organization
     dateOfSubmission : DateTime
     projectTitle : string
     shortDescription : string
@@ -102,7 +47,7 @@ class Internship {
     finalGrade : float
     status : InternshipStatus
 }
-
+Internship -> Organization
 Internship --> Period
 
 class Intermediate_internship
@@ -133,16 +78,34 @@ Assignment <|-- Research_assignment
 Assignment <|-- Minor_assignment
 Assignment <|-- Engineering_assignment
 
+class IPerson{
+    firstName : string
+    lastName : string
+
+}
+
+class Student {
+    studentNumber : uint
+    assignment : Assignment
+
+}
 Student <|. IPerson
 
+class Contact_person {
+    functionTitle : string
+    email : string
+    phoneNumber : string
+    departmentName : string
+
+}
 Contact_person <|. IPerson
 Contact_person o- Organization
 
 class Minor {
     moduleName : string
 }
-Minor <-- Minor_internship
-Minor o- Minor_assignment
+Minor <- Minor_internship
+Minor <- Minor_assignment
 
 class Application {
     applicationId : int
@@ -161,7 +124,7 @@ ApplicationStatus <-- Application
 Student "1" o-- "0..*" Application
 Application "0..*" --> "1" Internship
 
-Intership o-- Student
+Internship o-- Student
 Student --> Assignment
 
 @enduml
