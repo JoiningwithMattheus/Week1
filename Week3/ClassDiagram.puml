@@ -114,7 +114,6 @@ enum ApplicationStatus {
 
 Student "1" o-- "0..*" Application
 Application "0..*" --> "1" Internship
-Application "0..*" --> "1" Assignment
 
 Intership o-- Student
 Student --> Assignment
