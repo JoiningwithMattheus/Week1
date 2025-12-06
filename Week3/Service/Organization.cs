@@ -15,4 +15,19 @@ namespace SIS
         } 
 
     }
+
+    public class Company : Organization
+    {
+        
+    }
+
+    public class ResearchGroup : Organization
+    {
+        
+    }
+
+    public class EducationInstitution : Organization
+    {
+        
+    }
 }
