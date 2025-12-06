@@ -1,8 +1,11 @@
-interface IPerson
+namespace SIS
 {
-    string FirstName { get; }
-    string LastName { get; }
-    string PhoneNumber { get; }
-    string Email { get; }
-    
+    interface IPerson
+    {
+        string FirstName { get; }
+        string LastName { get; }
+        string PhoneNumber { get; }
+        string Email { get; }
+        string GetFullName();
+    }
 }

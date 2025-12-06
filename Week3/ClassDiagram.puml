@@ -81,12 +81,15 @@ Organization <|-- Company
 Organization <|-- ResearchGroup
 Organization <|-- EducationalInstitute
 
+enum Semester {
+    One
+    Two
+}
+
 class Period {
     -year : int
     -semester : Semester
-}P
-
-enum Semester { 1 2 }
+}
 
 enum InternshipCategory {
     INTERMEDIATE
@@ -139,7 +142,6 @@ enum ApplicationStatus {
 
 Student "1" o-- "0..*" Application : applications
 Application "*" --> "1" Internship
-Application "*" --> "1" Student
 
 class Assignment {
     -description : string
