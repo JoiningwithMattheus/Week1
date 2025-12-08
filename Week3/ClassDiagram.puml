@@ -10,6 +10,7 @@ interface IPerson {
     -lastName : string
     -email : string
     -phoneNumber : string
+    
     +GetFullName() : string
 }
 
@@ -87,8 +88,8 @@ enum Semester {
 }
 
 class Period {
-    -year : int
-    -semester : Semester
+    +year : int
+    +semester : Semester
 }
 
 enum InternshipCategory {
@@ -98,15 +99,15 @@ enum InternshipCategory {
 }
 
 class Internship {
-    -id : int
-    -dateOfSubmission : DateTime
-    -projectTitle : string
-    -shortDescription : string
-    -longDescription : string
-    -finalGrade : float
-    -status : InternshipStatus
-    -capacity : int
-    -assignedStudents : List<Student>
+    +id : int
+    +dateOfSubmission : DateTime
+    +projectTitle : string
+    +shortDescription : string
+    +longDescription : string
+    +finalGrade : float
+    +status : InternshipStatus
+    +capacity : int
+    +assignedStudents : List<Student>
 
     +GetOverview() : string
 }
@@ -126,10 +127,10 @@ Organization "1" o-- "0..*" Internship : internships
 
 
 class Application {
-    -applicationId : int
-    -submittedAt : DateTime
-    -status : ApplicationStatus
-    -motivation : string
+    +applicationId : int
+    +submittedAt : DateTime
+    +status : ApplicationStatus
+    +motivation : string
 
     +GetSummary() : string
 }

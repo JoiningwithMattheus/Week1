@@ -6,6 +6,6 @@ namespace SIS
 {
     public static void Main()
     {
-        
+        Coordinator
     }
 }
