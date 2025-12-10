@@ -5,6 +5,7 @@ namespace SIS
         public int Year { get; set; } = year;
         public Semester Semester { get; set; } = semester;
     }
+
     public class Internship
     {
         public int Id { get; set; }
@@ -15,39 +16,38 @@ namespace SIS
         public float? FinalGrade { get; set; }
         public InternshipStatus Status { get; set; } = InternshipStatus.OPEN;
         public int Capacity { get; set; } = 1;
-        public List<Student> AssignedStudents { get; set; }
+
+        // Correct version
         private readonly List<Student> _assignedStudents = new();
         public IReadOnlyCollection<Student> AssignedStudents => _assignedStudents;
-        
-        public Period Period{get; set;}
-        public Organization Organization{get; set;}
+
+        public Period Period { get; set; }
+        public Organization Organization { get; set; }
+
+        // Correct version
         private readonly List<ContactPerson> _contactPersons = new();
-        public IReadOnlyCollection<ContactPerson> ContactPersons => _contactPerson;
+        public IReadOnlyCollection<ContactPerson> ContactPersons => _contactPersons;
 
         public void AddContactPerson(ContactPerson cp)
         {
-            if(cp == null)
-            {
+            if (cp == null)
                 throw new ArgumentNullException(nameof(cp));
-            }
+
             _contactPersons.Add(cp);
         }
 
         public void AssignStudents(Student s)
         {
-            if(s == null)
-            {
+            if (s == null)
                 throw new ArgumentNullException(nameof(s));
-            }
-            if(_assignedStudents.Count >= Capacity)
-            {
+
+            if (_assignedStudents.Count >= Capacity)
                 throw new InvalidOperationException("No slot left!");
-            }
+
             _assignedStudents.Add(s);
-            if(_assignedStudents.Count >= Capacity)
-            {
-                Status = InternshipStatus.Assigned;
-            }
+
+            if (_assignedStudents.Count >= Capacity)
+                Status = InternshipStatus.ASSIGNED;
         }
 
         public string Overview()
@@ -55,7 +55,8 @@ namespace SIS
             return $"{ProjectTitle} : {Status} \n {ShortDescription}";
         }
     }
-    public class IntermediateInternship : Internship{}
-    public class MinorInternship : Internship{}
-    public class GraduationInternship : Internship{}
+
+    public class IntermediateInternship : Internship { }
+    public class MinorInternship : Internship { }
+    public class GraduationInternship : Internship { }
 }
