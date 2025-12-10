@@ -12,6 +12,8 @@ namespace SIS
 
         public List<Application> Applications { get; private set; } = new();
 
+        private readonly SisDbContext _db;
+
         public Student() { }
 
         public Student(uint studentNumber, string firstName, string lastName, string email, string phone)
@@ -21,6 +23,8 @@ namespace SIS
             LastName = lastName;
             Email = email;
             PhoneNumber = phone;
+
+            _db = new SisDbContext();
         }
 
         public string GetFullName() => $"{FirstName} {LastName}";
@@ -29,7 +33,15 @@ namespace SIS
 
         public void ShowMenu()
         {
-            Console.WriteLine("Student Menu:");
+            Console.WriteLine("\n===== STUDENT MENU =====");
+            Console.WriteLine("1. Show Available Internships");
+            Console.WriteLine("2. View Single Internship");
+            Console.WriteLine("3. Apply for Internship");
+        }
+
+        public void GetAvailableInternship(Period period, InternshipCategory category)
+        {
+            
         }
     }
 }
