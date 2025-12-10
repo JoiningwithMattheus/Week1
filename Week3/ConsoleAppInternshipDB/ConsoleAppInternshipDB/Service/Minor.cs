@@ -1,7 +1,9 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace SIS
 {
     public class Minor
     {
-        private string moduleName;
+        public string? moduleName {get; set;}
     }
 }

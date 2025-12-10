@@ -6,10 +6,10 @@ namespace SIS
     {
         public int CoordinatorId { get; set; }
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? Email { get; set; }
+        public string? PhoneNumber { get; set; }
 
         public string GetFullName() => $"{FirstName} {LastName}";
 
@@ -33,7 +33,7 @@ namespace SIS
 
         public void ShowMenu()
         {
-            Console.WriteLine("\n===== COORDINATOR MENU =====");
+            Console.WriteLine("\nCOORDINATOR MENU:\n");
             Console.WriteLine("1. Add Organisation");
             Console.WriteLine("2. Remove Organisation");
             Console.WriteLine("3. List Organisations");

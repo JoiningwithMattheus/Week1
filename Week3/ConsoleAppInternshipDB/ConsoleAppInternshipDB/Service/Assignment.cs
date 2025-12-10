@@ -1,13 +1,8 @@
 namespace SIS
 {
-    public abstract class Assignment
+    public class Assignment
     {
-        private string description;
-
-        public string GetDescription()
-        {
-            return description;
-        }
+        public string? description{get; set;}
     }
 
     public class ResearchAssignment : Assignment
@@ -22,6 +17,6 @@ namespace SIS
 
     public class MinorAssignment : Assignment
     {
-        private Minor minor;  
+        public Minor? minor;  
     }
 }

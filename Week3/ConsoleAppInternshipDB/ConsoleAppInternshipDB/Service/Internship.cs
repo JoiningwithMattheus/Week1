@@ -10,9 +10,9 @@ namespace SIS
     {
         public int Id { get; set; }
         public DateTime DateOfSubmission { get; set; }
-        public string ProjectTitle { get; set; }
-        public string ShortDescription { get; set; }
-        public string LongDescription { get; set; }
+        public string? ProjectTitle { get; set; }
+        public string? ShortDescription { get; set; }
+        public string? LongDescription { get; set; }
         public float? FinalGrade { get; set; }
         public InternshipStatus Status { get; set; } = InternshipStatus.OPEN;
         public int Capacity { get; set; } = 1;
@@ -21,8 +21,8 @@ namespace SIS
         private readonly List<Student> _assignedStudents = new();
         public IReadOnlyCollection<Student> AssignedStudents => _assignedStudents;
 
-        public Period Period { get; set; }
-        public Organization Organization { get; set; }
+        public Period Period { get; set; } = new Period(0, Semester.One);
+        public Organization? Organization { get; set; }
 
         // Correct version
         private readonly List<ContactPerson> _contactPersons = new();
