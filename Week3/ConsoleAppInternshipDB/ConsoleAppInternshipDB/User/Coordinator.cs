@@ -112,16 +112,16 @@ namespace SIS
 
         public bool ProcessAssignment(Application application)
         {
-            application.Status = ApplicationStatus.Approved;
+            application.Status = ApplicationStatus.APPROVED;
             return true;
         }
 
         public async Task AssignStudentToInternshipAsync(Student student, Internship internship)
         {
-            internship.AssignedStudents.Add(student);
-            internship.Status = InternshipStatus.ASSIGNED;
+            internship.AssignStudents(student);
             await _db.SaveChangesAsync();
         }
+
 
         public async Task MarkInternshipCompletedAsync(Internship internship, float finalGrade)
         {

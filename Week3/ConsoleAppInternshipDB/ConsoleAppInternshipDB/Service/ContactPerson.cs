@@ -20,5 +20,9 @@ public class ContactPerson : IPerson
         DepartmentName = department;
     }
 
+    public int InternshipId { get; set; }
+    public Internship Internship { get; set; }
+
+
     public string GetFullName() => $"{FirstName} {LastName}";
 }
