@@ -28,11 +28,22 @@ namespace SIS
 
         override bool Login()
         {
+            Console.WriteLine("Login as student successful.\n Opening Menu...");
+            return true;
 
         }
 
         override void ShowMenu()
         {
+            bool on = true;
+            if (Login())
+            {
+                while (on)
+                {
+                    //take inputs, if quit input turn on to false
+                }
+            }
+            else Console.Writeline("Login Failed.");
             
         }
     }
