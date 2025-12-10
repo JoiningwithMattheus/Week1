@@ -5,10 +5,10 @@ namespace SIS
         public int StudentId { get; set; }
         public uint StudentNumber { get; set; }
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? Email { get; set; }
+        public string? PhoneNumber { get; set; }
 
         public List<Application> Applications { get; private set; } = new();
 
