@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace SIS
 {
     public class Student : IPerson, IUser
@@ -41,7 +43,45 @@ namespace SIS
 
         public void GetAvailableInternship(Period period, InternshipCategory category)
         {
+            List<Internship> internships = ListInternshipsAsync(period, category).GetAwaiter().GetResult();
+
+            if (internships == null)
+            {
+                Console.WriteLine("No internships available for the selected period and category.");
+                return;
+            }
+            
+            Console.WriteLine($"Available Internships ({category}):");
+            
+            for (int i = 0; i < internships.Count; i++)
+            {
+                var internship = internships[i];
+                Console.WriteLine($"{i + 1}.");
+                Console.WriteLine($"   Organization: {internship.Organization.Name}");
+                Console.WriteLine($"   Address: {internship.Organization.Address}");
+                Console.WriteLine($"   Date of Submission: {internship.DateOfSubmission}");
+                Console.WriteLine($"   Project Title: {internship.ProjectTitle}");
+                Console.WriteLine($"   Short Description: {internship.ShortDescription}");
+                Console.WriteLine();
+            }
             
         }
+
+        public async Task<List<Internship>> ListInternshipsAsync(Period period, InternshipCategory category)
+        {
+            return await _db.Internships
+                .Where(i =>
+                     i.Period.Year == period.Year &&
+                     i.Period.Semester == period.Semester &&
+                    (
+                        (category == InternshipCategory.INTERMEDIATE && i is IntermediateInternship) ||
+                        (category == InternshipCategory.MINOR && i is MinorInternship) ||
+                        (category == InternshipCategory.GRADUATION && i is GraduationInternship)
+                    )
+                )
+                .ToListAsync();
+        }
+
+        
     }
 }
