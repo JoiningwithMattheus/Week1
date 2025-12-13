@@ -1,3 +1,4 @@
+using System.Collections.Specialized;
 using Microsoft.EntityFrameworkCore;
 
 namespace SIS
@@ -35,10 +36,59 @@ namespace SIS
 
         public void ShowMenu()
         {
-            Console.WriteLine("\n===== STUDENT MENU =====");
-            Console.WriteLine("1. Show Available Internships");
-            Console.WriteLine("2. View Single Internship");
-            Console.WriteLine("3. Apply for Internship");
+            bool quit = false;
+            while (!quit){
+                Console.WriteLine("\n===== STUDENT MENU =====");
+                Console.WriteLine("1. Show Available Internships");
+                Console.WriteLine("2. Apply for Internship");
+                Console.WriteLine("Q. quit");
+                string? input = Console.ReadLine();
+                if (input == "1")
+                {
+                    // Get period from user
+                    Console.Write("Enter year: ");
+                    int year = int.Parse(Console.ReadLine() ?? "2025");
+                    
+                    Console.WriteLine("Select semester:");
+                    Console.WriteLine("1. Semester 1");
+                    Console.WriteLine("2. Semester 2");
+                    string? semesterInput = Console.ReadLine();
+                    
+                    Semester semester = semesterInput == "1" ? Semester.One : Semester.Two; //temp defaults to Two if anything else
+                    
+                    // Get category from user
+                    Console.WriteLine("Select internship category:");
+                    Console.WriteLine("1. MINOR");
+                    Console.WriteLine("2. INTERMEDIATE");
+                    Console.WriteLine("3. GRADUATION");
+                    string? categoryInput = Console.ReadLine();
+                    
+                    InternshipCategory category = categoryInput switch
+                    {
+                        "1" => InternshipCategory.MINOR,
+                        "2" => InternshipCategory.INTERMEDIATE,
+                        "3" => InternshipCategory.GRADUATION,
+                        _ => InternshipCategory.MINOR //temp defaults to minor
+                    };
+                    
+                    Period period = new Period(year, semester);
+                    GetAvailableInternship(period, category);
+                }
+                else if (input == "2")
+                {
+                    //TODO: Implement application function
+                    Console.WriteLine("Application Process not yet implemented");
+                }
+                else if (input == "Q" || input == "q" || input == "Quit" || input == "quit")
+                {
+                    Console.WriteLine("Quitting.");
+                    quit = true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Option, try again.");
+                }
+            }
         }
 
         public void GetAvailableInternship(Period period, InternshipCategory category)
@@ -64,6 +114,35 @@ namespace SIS
                 Console.WriteLine($"   Short Description: {internship.ShortDescription}");
                 Console.WriteLine();
             }
+
+            while(true) {
+                Console.WriteLine("Enter a number to view the full description of an internship, or M to return to Menu.");
+                string? input = Console.ReadLine();
+                int num;
+                if (int.TryParse(input, out num)) 
+                {
+                    var internship = internships[num];
+                    Console.WriteLine($"Organization: {internship.Organization.Name}");
+                    Console.WriteLine($"Address: {internship.Organization.Address}");
+                    Console.WriteLine($"Date of Submission: {internship.DateOfSubmission}");
+                    Console.WriteLine($"Project Title: {internship.ProjectTitle}");
+                    Console.WriteLine($"Long Description: {internship.LongDescription}");
+                    Console.WriteLine($"Contact Persons:");
+                    foreach (ContactPerson contact in internship.ContactPersons)
+                    {
+                        Console.WriteLine($"   Name: {contact.FirstName} {contact.LastName}");
+                        Console.WriteLine($"   Email: {contact.Email}");
+                        Console.WriteLine($"   Phone Number: {contact.PhoneNumber}");
+                        Console.WriteLine($"   Function Title: {contact.FunctionTitle}");
+                        Console.WriteLine($"   Department Name: {contact.DepartmentName}");
+                    }
+                }       
+                else if (input == "M" || input == "m")
+                {
+                    return;
+                }     
+            }
+
             
         }
 
