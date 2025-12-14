@@ -1,5 +1,6 @@
 using System.Collections.Specialized;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace SIS
 {
@@ -32,7 +33,30 @@ namespace SIS
 
         public string GetFullName() => $"{FirstName} {LastName}";
 
-        public bool Login() => true;
+        public bool Login()
+        {
+            Console.WriteLine("Enter Student Number:");
+            string? input = Console.ReadLine();
+            uint loginnum;
+            if (uint.TryParse(input, out loginnum))
+            {
+                foreach (Student student in _db.Students)
+                {
+                    if (student.StudentNumber == loginnum)
+                    {
+                        StudentNumber = loginnum;
+                        FirstName = student.FirstName;
+                        LastName = student.LastName;
+                        Email = student.Email;
+                        PhoneNumber = student.PhoneNumber;
+                        Applications = student.Applications;
+                        return true;
+                    }
+                }
+            }
+            Console.WriteLine("Invalid Login.");
+            return false;
+        }
 
         public void ShowMenu()
         {
