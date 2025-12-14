@@ -2,21 +2,18 @@ namespace SIS
 {
     public class Assignment
     {
-        public string? description{get; set;}
+        // PRIMARY KEY 
+        public int AssignmentId { get; set; }
+
+        public string Description { get; set; } = string.Empty;
+
+        public string GetDescription() => Description;
     }
 
-    public class ResearchAssignment : Assignment
-    {
-        
-    }
-
-    public class EngineeringAssignment : Assignment
-    {
-        
-    }
-
+    public class ResearchAssignment : Assignment { }
     public class MinorAssignment : Assignment
     {
-        public Minor? minor;  
+        public Minor? Minor { get; set; }
     }
+    public class EngineeringAssignment : Assignment { }
 }

@@ -1,18 +1,22 @@
-namespace SIS;
-
-public class ContactPerson : IPerson
+namespace SIS
 {
-    public string? FirstName { get; set; }
-    public string? LastName { get; set; }
-    public string? Email { get; set; }
-    public string? PhoneNumber { get; set; }
+    public class ContactPerson : IPerson
+    {
+        public int ContactPersonId { get; set; }
 
-    public string? FunctionTitle { get; set; }
-    public string? DepartmentName { get; set; }
+        // FK
+        public int InternshipId { get; set; }
 
+        public Internship Internship { get; set; } = null!;
 
-    public int InternshipId { get; set; }
-    public Internship? Internship { get; set; }
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string PhoneNumber { get; set; } = null!;
 
-    public string GetFullName() => $"{FirstName} {LastName}";
+        public string FunctionTitle { get; set; } = null!;
+        public string DepartmentName { get; set; } = null!;
+
+        public string GetFullName() => $"{FirstName} {LastName}";
+    }
 }

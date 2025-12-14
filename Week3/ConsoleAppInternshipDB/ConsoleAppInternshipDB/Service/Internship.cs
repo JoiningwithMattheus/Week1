@@ -1,9 +1,17 @@
 namespace SIS
 {
-    public class Period(int year, Semester semester)
+    public class Period
     {
-        public int Year { get; set; } = year;
-        public Semester Semester { get; set; } = semester;
+        public Period() { }
+
+        public Period(int year, Semester semester)
+        {
+            Year = year;
+            Semester = semester;
+        }
+
+        public int Year { get; set; }
+        public Semester Semester { get; set; }
     }
 
     public class Internship
@@ -17,23 +25,20 @@ namespace SIS
         public InternshipStatus Status { get; set; } = InternshipStatus.OPEN;
         public int Capacity { get; set; } = 1;
 
-        // Correct version
         private readonly List<Student> _assignedStudents = new();
         public IReadOnlyCollection<Student> AssignedStudents => _assignedStudents;
 
         public Period Period { get; set; } = new Period(0, Semester.One);
         public Organization? Organization { get; set; }
-
-        // Correct version
-        private readonly List<ContactPerson> _contactPersons = new();
-        public IReadOnlyCollection<ContactPerson> ContactPersons => _contactPersons;
+        public ICollection<ContactPerson> ContactPersons { get; set; }
+            = new List<ContactPerson>();
 
         public void AddContactPerson(ContactPerson cp)
         {
             if (cp == null)
                 throw new ArgumentNullException(nameof(cp));
 
-            _contactPersons.Add(cp);
+            ContactPersons.Add(cp);
         }
 
         public void AssignStudents(Student s)

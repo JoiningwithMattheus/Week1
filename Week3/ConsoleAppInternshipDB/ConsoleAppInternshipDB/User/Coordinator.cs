@@ -6,10 +6,10 @@ namespace SIS
     {
         public int CoordinatorId { get; set; }
 
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public string? Email { get; set; }
-        public string? PhoneNumber { get; set; }
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string PhoneNumber { get; set; } = null!;
 
         public string GetFullName() => $"{FirstName} {LastName}";
 
@@ -27,10 +27,9 @@ namespace SIS
 
         public bool Login()
         {
-            // In real systems you'd check password, etc.
             return true;
         }
-
+        
         public void ShowMenu()
         {
             Console.WriteLine("\nCOORDINATOR MENU:\n");
@@ -116,12 +115,19 @@ namespace SIS
             return true;
         }
 
-        public async Task AssignStudentToInternshipAsync(Student student, Internship internship)
+        public async Task AssignStudentToInternshipAsync(uint studentNumber, int internshipId)
         {
-            internship.AssignStudents(student);
+            var managedStudent = await _db.Students.FirstOrDefaultAsync(s => s.StudentNumber == studentNumber)
+                ?? throw new InvalidOperationException("Student not found");
+
+            var managedInternship = await _db.Internships
+                .Include(i => i.AssignedStudents)
+                .FirstOrDefaultAsync(i => i.Id == internshipId)
+                ?? throw new InvalidOperationException("Internship not found");
+
+            managedInternship.AssignStudents(managedStudent);
             await _db.SaveChangesAsync();
         }
-
 
         public async Task MarkInternshipCompletedAsync(Internship internship, float finalGrade)
         {
