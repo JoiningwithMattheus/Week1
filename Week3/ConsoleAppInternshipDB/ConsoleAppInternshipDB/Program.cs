@@ -50,7 +50,7 @@ namespace SIS
                     case "1":
                         await ShowAvailableInternships(student);
                         break;
-                    case "2": 
+                    case "2":
                         await ApplyForInternship(student);
                         break;
                     case "3":
@@ -76,11 +76,20 @@ namespace SIS
 
                 switch (input)
                 {
-                    case "1": // Add Organisation
+                    case "1":
                         await AddOrganisation(coordinator);
                         break;
-                    case "4": // Add Internship
+                    case "2":
+                        await RemoveOrganisation(coordinator);
+                        break;
+                    case "3":
+                        await ListOrganisations(coordinator);
+                        break;
+                    case "4":
                         await AddInternship(coordinator);
+                        break;
+                    case "5":
+                        await WithdrawInternships(coordinator);
                         break;
                     default:
                         Console.WriteLine("Feature not implemented yet.");
@@ -230,6 +239,48 @@ namespace SIS
 
             await coordinator.AddInternshipAsync(internship, companyId);
             Console.WriteLine("Internship added successfully.");
+        }
+
+        private static async Task RemoveOrganisation(Coordinator coordinator)
+        {
+            Console.WriteLine("Enter the organisation ID: ");
+            int orgId = Convert.ToInt32(Console.ReadLine()!);
+
+            Console.WriteLine("Enter Y to confirm!");
+            string conf = Console.ReadLine()!;
+            if (conf == "Y" || conf == "y")
+            {
+                await coordinator.RemoveOrganisationAsync(orgId);
+                Console.WriteLine("Organisation removed successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Organisation has not been removed yet.");
+            }
+        }
+        private static async Task ListOrganisations(Coordinator coordinator)
+        {
+            var organizations = await coordinator.ListOrganisationsAsync();
+            Console.WriteLine("Available Organisations:");
+            foreach (var i in organizations)
+                Console.WriteLine($"{i.Id}: {i.Name} \n ({i.PhoneNumber} - {i.Address})");
+        }
+        private static async Task WithdrawInternships(Coordinator coordinator)
+        {
+            Console.WriteLine("Enter the Internship ID: ");
+            int intID = Convert.ToInt32(Console.ReadLine()!);
+
+            Console.WriteLine("Enter Y to confirm!");
+            string conf = Console.ReadLine()!;
+            if (conf == "Y" || conf == "y")
+            {
+                await coordinator.WithdrawInternshipAsync(intID);
+                Console.WriteLine("Internship removed successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Internship has not been withdrawn yet.");
+            }
         }
     }
 }
