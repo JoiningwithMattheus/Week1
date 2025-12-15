@@ -1,4 +1,5 @@
 using System.Collections.Specialized;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -74,11 +75,11 @@ namespace SIS
         public void ShowMenu()
         {
             bool quit = false;
-            while (!quit)
-            {
-                Console.WriteLine("\nSTUDENT MENU")
+            while (!quit){
+                Console.WriteLine("\nSTUDENT MENU:");
                 Console.WriteLine("1. Show Available Internships");
                 Console.WriteLine("2. Apply for Internship");
+                Console.WriteLine("3. View current Applications");
                 Console.WriteLine("Q. quit");
                 string? input = Console.ReadLine();
                 if (input == "1")
@@ -86,7 +87,8 @@ namespace SIS
                     // Get period from user
                     Console.Write("Enter year: ");
                     int year = int.Parse(Console.ReadLine() ?? "2025");
-
+                    // defaults to 2025 if nothing entered
+                    
                     Console.WriteLine("Select semester:");
                     Console.WriteLine("1. Semester 1");
                     Console.WriteLine("2. Semester 2");
@@ -116,6 +118,10 @@ namespace SIS
                 {
                     //TODO: Implement application function
                     Console.WriteLine("Application Process not yet implemented");
+                }
+                else if (input == "3")
+                {
+                    ShowApplications();
                 }
                 else if (input == "Q" || input == "q" || input == "Quit" || input == "quit")
                 {
@@ -200,6 +206,22 @@ namespace SIS
                 .ToListAsync();
         }
 
+        public void ShowApplications()
+        {
+            if (Applications.Count > 0) 
+            {
+                foreach (Application application in Applications)
+                {
+                    Console.WriteLine(application.Summary());
+                }
+            }
+            else
+            {
+                Console.WriteLine("No current applications.");
+            }
+        }
 
+
+        
     }
 }
