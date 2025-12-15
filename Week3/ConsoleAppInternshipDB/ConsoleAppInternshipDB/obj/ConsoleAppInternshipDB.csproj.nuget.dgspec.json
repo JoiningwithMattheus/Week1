@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj": {}
+    "c:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj": {
+    "c:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj",
+        "projectUniqueName": "c:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj",
         "projectName": "ConsoleAppInternshipDB",
-        "projectPath": "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj",
+        "projectPath": "c:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj",
         "packagesPath": "C:\\Users\\ErikW\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\obj\\",
+        "outputPath": "c:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

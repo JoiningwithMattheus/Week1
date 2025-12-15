@@ -1,4 +1,5 @@
 using System.Collections.Specialized;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -65,6 +66,7 @@ namespace SIS
                 Console.WriteLine("\n===== STUDENT MENU =====");
                 Console.WriteLine("1. Show Available Internships");
                 Console.WriteLine("2. Apply for Internship");
+                Console.WriteLine("3. View current Applications");
                 Console.WriteLine("Q. quit");
                 string? input = Console.ReadLine();
                 if (input == "1")
@@ -102,6 +104,10 @@ namespace SIS
                 {
                     //TODO: Implement application function
                     Console.WriteLine("Application Process not yet implemented");
+                }
+                else if (input == "3")
+                {
+                    ShowApplications();
                 }
                 else if (input == "Q" || input == "q" || input == "Quit" || input == "quit")
                 {
@@ -184,6 +190,15 @@ namespace SIS
                 )
                 .ToListAsync();
         }
+
+        public void ShowApplications()
+        {
+            foreach (Application application in Applications)
+            {
+                Console.WriteLine(application.Summary());
+            }
+        }
+
 
         
     }

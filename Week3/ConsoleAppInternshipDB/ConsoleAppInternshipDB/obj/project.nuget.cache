@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5hexSEaMK5I=",
+  "dgSpecHash": "BjFdQkWnYQw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj",
+  "projectFilePath": "c:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ErikW\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\ErikW\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
