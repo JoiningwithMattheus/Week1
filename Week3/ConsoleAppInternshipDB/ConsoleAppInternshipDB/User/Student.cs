@@ -16,20 +16,15 @@ namespace SIS
         public string Email { get; private set; } = string.Empty;
         public string PhoneNumber { get; private set; } = string.Empty;
 
-        // backing list + read-only view
         private readonly List<Application> _applications = new();
         public IReadOnlyCollection<Application> Applications => _applications.AsReadOnly();
 
         public Assignment? Assignment { get; private set; }
 
-        private readonly SisDbContext _db;
-
-        // EF Core requires a parameterless ctor; keep it private
         private Student()
         {
             // keep string props non-null for nullable analysis
             FirstName = LastName = Email = PhoneNumber = string.Empty;
-            _db = null!; // EF will set values when materializing
         }
 
         public Student(
@@ -44,8 +39,6 @@ namespace SIS
             LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
             Email = email ?? throw new ArgumentNullException(nameof(email));
             PhoneNumber = phoneNumber ?? throw new ArgumentNullException(nameof(phoneNumber));
-
-            _db = new SisDbContext();
         }
 
         public string GetFullName() => $"{FirstName} {LastName}";
@@ -62,7 +55,8 @@ namespace SIS
 
         public async Task<List<Internship>> GetAvailableInternshipAsync(Period period, InternshipCategory category)
         {
-            return await _db.Internships
+            using var db = new SisDbContext();
+            return await db.Internships
                 .Where(i =>
                     i.Status == InternshipStatus.OPEN &&
                     i.Period.Year == period.Year &&
@@ -76,23 +70,22 @@ namespace SIS
                 .ToListAsync();
         }
 
-        // SAFER Apply: ensure we work with entities tracked by this context
         public async Task<Application> ApplyForInternshipAsync(Internship internship)
         {
             if (internship == null) throw new ArgumentNullException(nameof(internship));
-
+            using var db = new SisDbContext();
             // Ensure the student exists in this context (by unique StudentNumber)
-            var managedStudent = await _db.Students
+            var managedStudent = await db.Students
                 .FirstOrDefaultAsync(s => s.StudentNumber == this.StudentNumber);
 
             if (managedStudent == null)
             {
                 // If the student isn't yet persisted in this DB instance, persist it here
                 // and then re-fetch to have a managed instance.
-                _db.Students.Add(this);
-                await _db.SaveChangesAsync();
+                db.Students.Add(this);
+                await db.SaveChangesAsync();
 
-                managedStudent = await _db.Students
+                managedStudent = await db.Students
                     .FirstOrDefaultAsync(s => s.StudentNumber == this.StudentNumber);
 
                 if (managedStudent == null)
@@ -100,7 +93,7 @@ namespace SIS
             }
 
             // Load the internship from this same context (include Organization to avoid re-insert)
-            var managedInternship = await _db.Internships
+            var managedInternship = await db.Internships
                 .Include(i => i.Organization)
                 .FirstOrDefaultAsync(i => i.Id == internship.Id);
 
@@ -117,8 +110,8 @@ namespace SIS
                 Motivation = string.Empty
             };
 
-            _db.Applications.Add(application);
-            await _db.SaveChangesAsync();
+            db.Applications.Add(application);
+            await db.SaveChangesAsync();
 
             // update local backing list (so in-memory state matches DB)
             _applications.Add(application);
