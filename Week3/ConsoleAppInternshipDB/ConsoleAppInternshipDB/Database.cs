@@ -25,7 +25,6 @@ public class SisDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // ContactPerson <-> Internship (explicit FK) — keep your existing config
         modelBuilder.Entity<ContactPerson>()
             .HasOne(cp => cp.Internship)
             .WithMany(i => i.ContactPersons)
