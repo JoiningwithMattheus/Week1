@@ -152,6 +152,12 @@ namespace SIS
             };
 
             var internships = await student.GetAvailableInternshipAsync(period, category);
+
+            if (internships == null || !internships.Any())
+            {
+                Console.WriteLine("No internships available for the selected period and category.");
+                return;
+            }
             Console.WriteLine("Available Internships:");
             foreach (var i in internships)
                 Console.WriteLine($"{i.Id}: {i.ProjectTitle} ({i.Status})");
@@ -176,10 +182,19 @@ namespace SIS
         private static void ShowApplications(Student student)
         {
             var apps = student.GetApplications();
-            if (apps.Count == 0) Console.WriteLine("No applications.");
+
+            if (apps == null || apps.Count == 0)
+            {
+                Console.WriteLine("No applications.");
+                return;
+            }
+
             foreach (var a in apps)
+            {
                 Console.WriteLine($"{a.ApplicationID}: {a.Internship.ProjectTitle}, Status: {a.Status}");
+            }
         }
+
 
         private static async Task<Coordinator?> CreateOrLoginCoordinatorAsync()
         {
@@ -253,7 +268,6 @@ namespace SIS
             Console.WriteLine("Internship added successfully.");
         }
 
-
         private static async Task RemoveOrganisation(Coordinator coordinator)
         {
             Console.WriteLine("Enter the organisation ID: ");
@@ -274,10 +288,21 @@ namespace SIS
         private static async Task ListOrganisations(Coordinator coordinator)
         {
             var organizations = await coordinator.ListOrganisationsAsync();
+
+            if (organizations == null || !organizations.Any())
+            {
+                Console.WriteLine("No organisations available.");
+                return;
+            }
+
             Console.WriteLine("Available Organisations:");
+
             foreach (var i in organizations)
-                Console.WriteLine($"{i.Id}: {i.Name} \n ({i.PhoneNumber} - {i.Address})");
+            {
+                Console.WriteLine($"{i.Id}: {i.Name}\n({i.PhoneNumber} - {i.Address})");
+            }
         }
+
         private static async Task WithdrawInternships(Coordinator coordinator)
         {
             Console.WriteLine("Enter the Internship ID: ");
