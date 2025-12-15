@@ -193,9 +193,16 @@ namespace SIS
 
         public void ShowApplications()
         {
-            foreach (Application application in Applications)
+            if (Applications.Count > 0) 
             {
-                Console.WriteLine(application.Summary());
+                foreach (Application application in Applications)
+                {
+                    Console.WriteLine(application.Summary());
+                }
+            }
+            else
+            {
+                Console.WriteLine("No current applications.");
             }
         }
 
