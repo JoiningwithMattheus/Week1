@@ -63,7 +63,7 @@ namespace SIS
         {
             bool quit = false;
             while (!quit){
-                Console.WriteLine("\n===== STUDENT MENU =====");
+                Console.WriteLine("\nSTUDENT MENU:");
                 Console.WriteLine("1. Show Available Internships");
                 Console.WriteLine("2. Apply for Internship");
                 Console.WriteLine("3. View current Applications");
@@ -74,6 +74,7 @@ namespace SIS
                     // Get period from user
                     Console.Write("Enter year: ");
                     int year = int.Parse(Console.ReadLine() ?? "2025");
+                    // defaults to 2025 if nothing entered
                     
                     Console.WriteLine("Select semester:");
                     Console.WriteLine("1. Semester 1");
