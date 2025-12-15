@@ -82,6 +82,12 @@ namespace SIS
                     case "4": // Add Internship
                         await AddInternship(coordinator);
                         break;
+                    case "7": // Get Internship Contacts
+                        await ShowContacts(coordinator);
+                        break;
+                    case "10": // Mark internship as complete
+                        await MarkInternshipComplete(coordinator);
+                        break;
                     default:
                         Console.WriteLine("Feature not implemented yet.");
                         break;
@@ -231,5 +237,49 @@ namespace SIS
             await coordinator.AddInternshipAsync(internship, companyId);
             Console.WriteLine("Internship added successfully.");
         }
+
+        private static async Task ShowContacts(Coordinator coordinator)
+        {
+            Console.WriteLine("Enter Internship id:");
+            int internshipId = int.Parse(Console.ReadLine()!);
+            using var db = new SisDbContext();
+            var internship = await db.Internships.FindAsync(internshipId);
+
+            if (internship != null)
+            {
+                foreach (var contact in internship.ContactPersons)
+                {
+                    Console.WriteLine($"Name: {contact.GetFullName()}");
+                    Console.WriteLine($"    Email: {contact.Email}");
+                    Console.WriteLine($"    Phone number: {contact.PhoneNumber}");
+                    Console.WriteLine($"    Function: {contact.FunctionTitle}");
+                    Console.WriteLine($"    Department: {contact.DepartmentName}");
+                }            
+            }
+            else
+            {
+                Console.WriteLine("Invalid ID");
+            }
+        }
+
+        private static async Task MarkInternshipComplete(Coordinator coordinator)
+        {
+            Console.WriteLine("Enter Internship id:");
+            int internshipId = int.Parse(Console.ReadLine()!);
+            using var db = new SisDbContext();
+            var internship = await db.Internships.FindAsync(internshipId);
+
+            if (internship != null)
+            {
+                internship.Status = InternshipStatus.COMPLETED;
+                Console.WriteLine("Marked as complete.");         
+            }
+            else
+            {
+                Console.WriteLine("Invalid ID");
+            }
+        }
+
+
     }
 }
