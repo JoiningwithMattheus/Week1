@@ -323,17 +323,17 @@ namespace SIS
                 3 => InternshipCategory.GRADUATION,
                 _ => throw new ArgumentException("Invalid internship category")
             };
-            var organizations = await coordinator.ListInternshipsAsync(period, choices);
+            var internships = await coordinator.ListInternshipsAsync(period, choices);
 
-            if (organizations == null || !organizations.Any())
+            if (internships == null || !internships.Any())
             {
-                Console.WriteLine("No organisations available.");
+                Console.WriteLine("No internships available.");
                 return;
             }
 
             Console.WriteLine("Available Internships:");
 
-            foreach (var i in organizations)
+            foreach (var i in internships)
             {
                 Console.WriteLine($"{i.Id}: {i.ProjectTitle}\n({i.ContactPersons} - {i.Capacity})");
             }
