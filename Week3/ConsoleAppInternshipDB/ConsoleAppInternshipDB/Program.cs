@@ -91,6 +91,9 @@ namespace SIS
                     case "5":
                         await WithdrawInternships(coordinator);
                         break;
+                    case "6":
+                        await ListInternships(coordinator);
+                        break;
                     case "7":
                         await ShowContacts(coordinator);
                         break;
@@ -191,12 +194,12 @@ namespace SIS
 
             foreach (var a in apps)
             {
-                Console.WriteLine($"{a.ApplicationID}: {a.Internship.ProjectTitle}, Status: {a.Status}");
+                Console.WriteLine($"{a.ApplicationID}: {a.Internship!.Overview()}");
             }
         }
 
 
-        private static async Task<Coordinator?> CreateOrLoginCoordinatorAsync()
+        private static Task<Coordinator?> CreateOrLoginCoordinatorAsync()
         {
             Console.WriteLine("Enter coordinator first name:");
             string firstName = Console.ReadLine()!;
@@ -206,7 +209,8 @@ namespace SIS
             string email = Console.ReadLine()!;
             Console.WriteLine("Enter phone:");
             string phone = Console.ReadLine()!;
-            return new Coordinator(firstName, lastName, email, phone);
+            var coordinator = new Coordinator(firstName, lastName, email, phone);
+            return Task.FromResult<Coordinator?>(coordinator);
         }
 
         private static async Task AddOrganisation(Coordinator coordinator)
@@ -303,6 +307,38 @@ namespace SIS
             }
         }
 
+        private static async Task ListInternships(Coordinator coordinator)
+        {
+            Console.WriteLine("Enter period year:");
+            int year = int.Parse(Console.ReadLine()!);
+            Console.WriteLine("Enter semester (1 or 2):");
+            Semester semester = Console.ReadLine()! == "1" ? Semester.One : Semester.Two;
+            Console.WriteLine("Enter the internship category:\n1. Intermediate\n2. Minor\n 3. Graduation");
+            int intput = int.Parse(Console.ReadLine()!);
+            var period = new Period(year, semester);
+            InternshipCategory choices = intput switch
+            {
+                1 => InternshipCategory.INTERMEDIATE,
+                2 => InternshipCategory.MINOR,
+                3 => InternshipCategory.GRADUATION,
+                _ => throw new ArgumentException("Invalid internship category")
+            };
+            var organizations = await coordinator.ListInternshipsAsync(period, choices);
+
+            if (organizations == null || !organizations.Any())
+            {
+                Console.WriteLine("No organisations available.");
+                return;
+            }
+
+            Console.WriteLine("Available Internships:");
+
+            foreach (var i in organizations)
+            {
+                Console.WriteLine($"{i.Id}: {i.ProjectTitle}\n({i.ContactPersons} - {i.Capacity})");
+            }
+        }
+
         private static async Task WithdrawInternships(Coordinator coordinator)
         {
             Console.WriteLine("Enter the Internship ID: ");
@@ -325,27 +361,24 @@ namespace SIS
         {
             Console.WriteLine("Enter Internship id:");
             int internshipId = int.Parse(Console.ReadLine()!);
-            using var db = new SisDbContext();
-            var internship = await db.Internships.FindAsync(internshipId);
-
-            if (internship != null)
-            {
-                foreach (var contact in internship.ContactPersons)
-                {
-                    Console.WriteLine($"Name: {contact.GetFullName()}");
-                    Console.WriteLine($"    Email: {contact.Email}");
-                    Console.WriteLine($"    Phone number: {contact.PhoneNumber}");
-                    Console.WriteLine($"    Function: {contact.FunctionTitle}");
-                    Console.WriteLine($"    Department: {contact.DepartmentName}");
-                }            
-            }
-            else
+            var contacts = await coordinator.GetContactPersonsAsync(internshipId);
+            if (contacts == null)
             {
                 Console.WriteLine("Invalid ID");
+                return;
+            }
+            foreach (var contact in contacts)
+            {
+                Console.WriteLine($"Name: {contact.GetFullName()}");
+                Console.WriteLine($"    Email: {contact.Email}");
+                Console.WriteLine($"    Phone number: {contact.PhoneNumber}");
+                Console.WriteLine($"    Function: {contact.FunctionTitle}");
+                Console.WriteLine($"    Department: {contact.DepartmentName}");
             }
         }
 
-        private static async Task ProcessApplication(Coordinator coordinator){
+        private static async Task ProcessApplication(Coordinator coordinator)
+        {
             Console.WriteLine("Enter Application id:");
             int applicationId = int.Parse(Console.ReadLine()!);
             using var db = new SisDbContext();
@@ -378,7 +411,7 @@ namespace SIS
             int internshipId = int.Parse(Console.ReadLine()!);
             using var db = new SisDbContext();
             var internship = await db.Internships.FindAsync(internshipId);
-            
+
 
             if (internship != null)
             {
@@ -386,7 +419,7 @@ namespace SIS
                 float grade = float.Parse(Console.ReadLine()!);
 
                 await coordinator.MarkInternshipCompletedAsync(internship, grade);
-                Console.WriteLine("Marked as complete.");         
+                Console.WriteLine("Marked as complete.");
             }
             else
             {
