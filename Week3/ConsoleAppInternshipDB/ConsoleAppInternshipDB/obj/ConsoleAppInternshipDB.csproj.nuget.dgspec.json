@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Year 2\\Q2\\Interaction Design\\Week1\\week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj": {}
+    "E:\\Year 2\\Q2\\Interaction Design\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj": {}
   },
   "projects": {
-    "E:\\Year 2\\Q2\\Interaction Design\\Week1\\week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj": {
+    "E:\\Year 2\\Q2\\Interaction Design\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Year 2\\Q2\\Interaction Design\\Week1\\week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj",
+        "projectUniqueName": "E:\\Year 2\\Q2\\Interaction Design\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj",
         "projectName": "ConsoleAppInternshipDB",
-        "projectPath": "E:\\Year 2\\Q2\\Interaction Design\\Week1\\week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj",
+        "projectPath": "E:\\Year 2\\Q2\\Interaction Design\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\Year 2\\Q2\\Interaction Design\\Week1\\week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\obj\\",
+        "outputPath": "E:\\Year 2\\Q2\\Interaction Design\\Week1\\Week3\\ConsoleAppInternshipDB\\ConsoleAppInternshipDB\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

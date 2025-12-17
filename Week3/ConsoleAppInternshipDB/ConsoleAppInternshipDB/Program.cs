@@ -8,7 +8,7 @@ namespace SIS
     {
         static async Task Main()
         {
-            Console.WriteLine("Welcome to SIS System");
+            Console.WriteLine("Welcome to SIS System of group 15!");
             while (true)
             {
                 Console.WriteLine("\nSelect user type:");
