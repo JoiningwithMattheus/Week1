@@ -13,6 +13,7 @@ namespace SIS
 
         public string GetFullName() => $"{FirstName} {LastName}";
 
+        private readonly SisDbContext _db;
 
         public Coordinator(string firstName, string lastName, string email, string phoneNumber)
         {
@@ -20,6 +21,8 @@ namespace SIS
             LastName = lastName;
             Email = email;
             PhoneNumber = phoneNumber;
+
+            _db = new SisDbContext();
         }
 
         public bool Login()
@@ -44,55 +47,49 @@ namespace SIS
 
         public async Task<bool> AddOrganisationAsync(Organization org)
         {
-            using var db = new SisDbContext();
-            db.Organizations.Add(org);
-            await db.SaveChangesAsync();
+            _db.Organizations.Add(org);
+            await _db.SaveChangesAsync();
             return true;
         }
 
         public async Task<bool> RemoveOrganisationAsync(int orgId)
         {
-            using var db = new SisDbContext();
-            var org = await db.Organizations.FindAsync(orgId);
+            var org = await _db.Organizations.FindAsync(orgId);
             if (org == null) return false;
 
-            db.Organizations.Remove(org);
-            await db.SaveChangesAsync();
+            _db.Organizations.Remove(org);
+            await _db.SaveChangesAsync();
             return true;
         }
 
         public async Task<List<Organization>> ListOrganisationsAsync()
         {
-            using var db = new SisDbContext();
-            return await db.Organizations.ToListAsync();
+            return await _db.Organizations.ToListAsync();
         }
 
         public async Task AddInternshipAsync(Internship internship, int orgId)
         {
-            using var db = new SisDbContext();
-            var org = await db.Organizations.FindAsync(orgId);
+            var org = await _db.Organizations.FindAsync(orgId);
             if (org == null) throw new Exception("Organization not found.");
 
             internship.Organization = org;
 
-            db.Internships.Add(internship);
-            await db.SaveChangesAsync();
+            _db.Internships.Add(internship);
+            await _db.SaveChangesAsync();
         }
 
         public async Task WithdrawInternshipAsync(int internshipId)
         {
-            using var db = new SisDbContext();
-            var internship = await db.Internships.FindAsync(internshipId);
+            var internship = await _db.Internships.FindAsync(internshipId);
             if (internship == null) return;
 
             internship.Status = InternshipStatus.WITHDRAWN;
-            await db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
         }
 
         public async Task<List<Internship>> ListInternshipsAsync(Period period, InternshipCategory category)
         {
-            using var db = new SisDbContext();
-            return await db.Internships
+            return await _db.Internships
                 .Where(i =>
                      i.Period.Year == period.Year &&
                      i.Period.Semester == period.Semester &&
@@ -107,8 +104,7 @@ namespace SIS
 
         public async Task<List<ContactPerson>> GetContactPersonsAsync(int internshipId)
         {
-            using var db = new SisDbContext();
-            return await db.ContactPersons
+            return await _db.ContactPersons
                 .Where(cp => cp.InternshipId == internshipId)
                 .ToListAsync();
         }
@@ -121,25 +117,23 @@ namespace SIS
 
         public async Task AssignStudentToInternshipAsync(uint studentNumber, int internshipId)
         {
-            using var db = new SisDbContext();
-            var managedStudent = await db.Students.FirstOrDefaultAsync(s => s.StudentNumber == studentNumber)
+            var managedStudent = await _db.Students.FirstOrDefaultAsync(s => s.StudentNumber == studentNumber)
                 ?? throw new InvalidOperationException("Student not found");
 
-            var managedInternship = await db.Internships
+            var managedInternship = await _db.Internships
                 .Include(i => i.AssignedStudents)
                 .FirstOrDefaultAsync(i => i.Id == internshipId)
                 ?? throw new InvalidOperationException("Internship not found");
 
             managedInternship.AssignStudents(managedStudent);
-            await db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
         }
 
         public async Task MarkInternshipCompletedAsync(Internship internship, float finalGrade)
         {
-            using var db = new SisDbContext();
             internship.FinalGrade = finalGrade;
             internship.Status = InternshipStatus.COMPLETED;
-            await db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
         }
     }
 }
