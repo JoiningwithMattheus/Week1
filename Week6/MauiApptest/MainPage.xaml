@@ -9,21 +9,21 @@
                 <VerticalStackLayout Spacing="20"
                                      Padding="30">
 
-                        <!-- Display Text Field -->
-                        <Border Stroke="#512BD4"
-                                StrokeThickness="2"
-                                StrokeShape="RoundRectangle 10"
-                                BackgroundColor="#A9A9A9"
-                                Padding="15,10">
-                                <Label x:Name="DisplayLabel"
-                                       Text=""
-                                       FontSize="24"
-                                       FontFamily="Courier New"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalTextAlignment="Center"
-                                       MinimumHeightRequest="80"
-                                       LineBreakMode="WordWrap"/>
-                        </Border>
+                <!-- Display Text Field -->
+                <Border Stroke="#512BD4"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 10"
+                        BackgroundColor="#A9A9A9"
+                        Padding="15,10">
+                        <Entry x:Name="DisplayEntry"
+                               Text=""
+                               FontSize="24"
+                               FontFamily="Courier New"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               MinimumHeightRequest="80"
+                               Completed ="CalculateButton_Clicked"/>
+                </Border>
 
                         <!-- Result Display -->
                         <Border Stroke="#2E8B57"
@@ -42,11 +42,11 @@
                                        LineBreakMode="WordWrap"/>
                         </Border>
 
-                        <!-- Numpad Grid -->
-                        <Grid ColumnDefinitions="*,*,*,*,*,*"
-                              RowDefinitions="*,*,*,*,*"
-                              RowSpacing="10"
-                              ColumnSpacing="10">
+                <!-- Numpad Grid -->
+                <Grid ColumnDefinitions="*,*,*,*,*,*"
+                      RowDefinitions="*,*,*,*,*,*"
+                      RowSpacing="10"
+                      ColumnSpacing="10">
 
                                 <!-- Row 1 -->
                                 <Button Grid.Row="0"
@@ -76,7 +76,7 @@
                                         FontSize="14"/>
                                 <Button Grid.Row="0"
                                         Grid.Column="5"
-                                        Text="asin"
+                                        Text="round"
                                         Clicked="FunctionButton_Clicked"
                                         BackgroundColor="#FFA500"
                                         TextColor="White"
@@ -110,7 +110,7 @@
                                         FontSize="14"/>
                                 <Button Grid.Row="1"
                                         Grid.Column="5"
-                                        Text="sin"
+                                        Text="mod"
                                         Clicked="FunctionButton_Clicked"
                                         BackgroundColor="#FFA500"
                                         TextColor="White"
@@ -137,14 +137,14 @@
                                         TextColor="White"/>
                                 <Button Grid.Row="2"
                                         Grid.Column="4"
-                                        Text="ln"
+                                        Text="asin"
                                         Clicked="FunctionButton_Clicked"
                                         BackgroundColor="#FFA500"
                                         TextColor="White"
                                         FontSize="14"/>
                                 <Button Grid.Row="2"
                                         Grid.Column="5"
-                                        Text="cos"
+                                        Text="sin"
                                         Clicked="FunctionButton_Clicked"
                                         BackgroundColor="#FFA500"
                                         TextColor="White"
@@ -173,14 +173,14 @@
                                         TextColor="White"/>
                                 <Button Grid.Row="3"
                                         Grid.Column="4"
-                                        Text="^"
+                                        Text="acos"
                                         Clicked="OperatorButton_Clicked"
-                                        BackgroundColor="#4A90E2"
+                                        BackgroundColor="#FFA500"
                                         TextColor="White"
                                         FontSize="14"/>
                                 <Button Grid.Row="3"
                                         Grid.Column="5"
-                                        Text="tan"
+                                        Text="cos"
                                         Clicked="FunctionButton_Clicked"
                                         BackgroundColor="#FFA500"
                                         TextColor="White"
@@ -207,9 +207,9 @@
                                         TextColor="White"/>
                                 <Button Grid.Row="4"
                                         Grid.Column="3"
-                                        Text="acos"
+                                        Text="^"
                                         Clicked="FunctionButton_Clicked"
-                                        BackgroundColor="#FFA500"
+                                        BackgroundColor="#4A90E2"
                                         TextColor="White"
                                         FontSize="14"/>
                                 <Button Grid.Row="4"
@@ -221,12 +221,13 @@
                                         FontSize="14"/>
                                 <Button Grid.Row="4"
                                         Grid.Column="5"
-                                        Text="mod"
+                                        Text="tan"
                                         Clicked="FunctionButton_Clicked"
                                         BackgroundColor="#FFA500"
                                         TextColor="White"
                                         FontSize="14"/>
 
+                                <!-- Row 6: help -->
                                 <Button Grid.Row="5"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="3"
@@ -243,7 +244,7 @@
                                         BackgroundColor="#512BD4"
                                         TextColor="White"/>
 
-                        </Grid>
+                </Grid>
 
                 </VerticalStackLayout>
 

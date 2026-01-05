@@ -16,11 +16,11 @@ namespace MauiApptest
         {
             if (sender is Button button)
             {
+                ShowResult("", true);
                 foreach (var line in calculator.OperationsHelpText)
                 {
-                    DisplayLabel.Text += line + "\n";
+                    ResultLabel.Text += line + "\n";
                 }
-                HideResult();
             }
         }
 
@@ -28,11 +28,11 @@ namespace MauiApptest
         {
             if (sender is Button button)
             {
-                DisplayLabel.Text += "Enter expressions using RPN notation, for instance to calculate:\n";
-                DisplayLabel.Text += " 2 + 3 * 4\n";
-                DisplayLabel.Text += " enter '2 3 4 * +' \n";
-                DisplayLabel.Text += "enter (o)ps to see available operations";
-                HideResult();
+                ShowResult("", true);
+                ResultLabel.Text += "Enter expressions using RPN notation, for instance to calculate:\n";
+                ResultLabel.Text += " 2 + 3 * 4\n";
+                ResultLabel.Text += " enter '2 3 4 * +' \n";
+                ResultLabel.Text += "enter (o)ps to see available operations";
             }
         }
 
@@ -41,14 +41,14 @@ namespace MauiApptest
             if (sender is Button button)
             {
                 string number = button.Text;
-                DisplayLabel.Text += number;
+                DisplayEntry.Text += number;
                 HideResult();
             }
         }
 
         private void DecimalButton_Clicked(object sender, EventArgs e)
         {
-            DisplayLabel.Text += ",";
+            DisplayEntry.Text += ",";
             HideResult();
         }
 
@@ -57,7 +57,7 @@ namespace MauiApptest
             if (sender is Button button)
             {
                 string op = button.Text;
-                DisplayLabel.Text += " " + op + " ";
+                DisplayEntry.Text += " " + op + " ";
                 HideResult();
             }
         }
@@ -67,29 +67,29 @@ namespace MauiApptest
             if (sender is Button button)
             {
                 string func = button.Text;
-                DisplayLabel.Text += " " + func + " ";
+                DisplayEntry.Text += " " + func + " ";
                 HideResult();
             }
         }
 
         private void SpaceButton_Clicked(object sender, EventArgs e)
         {
-            DisplayLabel.Text += " ";
+            DisplayEntry.Text += " ";
             HideResult();
         }
 
         private void BackspaceButton_Clicked(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(DisplayLabel.Text))
+            if (!string.IsNullOrEmpty(DisplayEntry.Text))
             {
-                DisplayLabel.Text = DisplayLabel.Text.Substring(0, DisplayLabel.Text.Length - 1);
+                DisplayEntry.Text = DisplayEntry.Text.Substring(0, DisplayEntry.Text.Length - 1);
                 HideResult();
             }
         }
 
         private void ClearButton_Clicked(object sender, EventArgs e)
         {
-            DisplayLabel.Text = "";
+            DisplayEntry.Text = "";
             HideResult();
         }
 
@@ -97,7 +97,7 @@ namespace MauiApptest
         {
             try
             {
-                string expression = DisplayLabel.Text.Trim();
+                string expression = DisplayEntry.Text.Trim();
                 if (string.IsNullOrEmpty(expression))
                 {
                     ShowResult("Enter an expression first", false);
@@ -108,6 +108,7 @@ namespace MauiApptest
                 double result = calculator.Calculate(tokens);
 
                 ShowResult($"Result: {result}", true);
+                DisplayEntry.Text = $"{result}";
             }
             catch (FormatException ex)
             {
