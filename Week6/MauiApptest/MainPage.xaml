@@ -41,7 +41,7 @@
                 </Border>
 
                 <!-- Numpad Grid -->
-                <Grid ColumnDefinitions="*,*,*,*,*"
+                <Grid ColumnDefinitions="*,*,*,*,*,*"
                       RowDefinitions="*,*,*,*,*"
                       RowSpacing="10"
                       ColumnSpacing="10">
@@ -79,13 +79,6 @@
                                 BackgroundColor="#FFA500"
                                 TextColor="White"
                                 FontSize="14"/>
-                        <Button Grid.Row="0"
-                                Grid.Column="6"
-                                Text="atan"
-                                Clicked="FunctionButton_Clicked"
-                                BackgroundColor="#FFA500"
-                                TextColor="White"
-                                FontSize="14"/>
 
                         <!-- Row 2 -->
                         <Button Grid.Row="1"
@@ -116,13 +109,6 @@
                         <Button Grid.Row="1"
                                 Grid.Column="5"
                                 Text="sin"
-                                Clicked="FunctionButton_Clicked"
-                                BackgroundColor="#FFA500"
-                                TextColor="White"
-                                FontSize="14"/>
-                        <Button Grid.Row="1"
-                                Grid.Column="6"
-                                Text="mod"
                                 Clicked="FunctionButton_Clicked"
                                 BackgroundColor="#FFA500"
                                 TextColor="White"
@@ -201,27 +187,39 @@
                         <!-- Row 5: Control Buttons -->
                         <Button Grid.Row="4"
                                 Grid.Column="0"
-                                Grid.ColumnSpan="2"
                                 Text="Space"
                                 Clicked="SpaceButton_Clicked"
                                 BackgroundColor="#50C878"
                                 TextColor="White"/>
                         <Button Grid.Row="4"
-                                Grid.Column="2"
+                                Grid.Column="1"
                                 Text="Clear"
                                 Clicked="ClearButton_Clicked"
                                 BackgroundColor="#512BD4"
                                 TextColor="White"/>
                         <Button Grid.Row="4"
-                                Grid.Column="3"
-                                Grid.ColumnSpan="2"
-                                Text="Calculate"
+                                Grid.Column="2"
+                                Text="="
                                 Clicked="CalculateButton_Clicked"
                                 BackgroundColor="#9C27B0"
                                 TextColor="White"/>
                         <Button Grid.Row="4"
-                                Grid.Column="6"
+                                Grid.Column="3"
                                 Text="acos"
+                                Clicked="FunctionButton_Clicked"
+                                BackgroundColor="#FFA500"
+                                TextColor="White"
+                                FontSize="14"/>
+                        <Button Grid.Row="4"
+                                Grid.Column="4"
+                                Text="atan"
+                                Clicked="FunctionButton_Clicked"
+                                BackgroundColor="#FFA500"
+                                TextColor="White"
+                                FontSize="14"/>
+                        <Button Grid.Row="4"
+                                Grid.Column="5"
+                                Text="mod"
                                 Clicked="FunctionButton_Clicked"
                                 BackgroundColor="#FFA500"
                                 TextColor="White"
