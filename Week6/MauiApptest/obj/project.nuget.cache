@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GZk/heCqh7I=",
+  "dgSpecHash": "pOmkguGGkrY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week6\\MauiApptest\\MauiApptest.csproj",
+  "projectFilePath": "C:\\Users\\ErikW\\Documents\\GitHub\\Week1\\Week1\\Week6\\MauiApptest\\MauiApptest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ErikW\\.nuget\\packages\\googlegson\\2.13.1.1\\googlegson.2.13.1.1.nupkg.sha512",
     "C:\\Users\\ErikW\\.nuget\\packages\\microsoft.extensions.configuration\\10.0.0\\microsoft.extensions.configuration.10.0.0.nupkg.sha512",

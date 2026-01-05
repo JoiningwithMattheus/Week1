@@ -89,7 +89,7 @@
             
             <!-- Row 4 -->
             <Button Grid.Row="3" Grid.Column="0" Text="0" Clicked="NumberButton_Clicked"/>
-            <Button Grid.Row="3" Grid.Column="1" Text="." Clicked="DecimalButton_Clicked"/>
+            <Button Grid.Row="3" Grid.Column="1" Text="," Clicked="DecimalButton_Clicked"/>
             <Button Grid.Row="3" Grid.Column="2" Text="⌫" 
                     Clicked="BackspaceButton_Clicked"
                     BackgroundColor="#FF6B6B"
