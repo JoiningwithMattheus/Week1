@@ -12,6 +12,24 @@ namespace MauiApptest
             InitializeComponent();
         }
 
+        private void HelperButton_Clicked(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                DisplayLabel.Text = calculator.OperationsHelpText;
+                HideResult();
+            }
+        }
+
+        private void OperatorsButton_Clicked(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                DisplayLabel.Text = calculator.SupportedOperators;
+                HideResult();
+            }
+        }
+
         private void NumberButton_Clicked(object sender, EventArgs e)
         {
             if (sender is Button button)
