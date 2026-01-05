@@ -15,14 +15,14 @@
                         StrokeShape="RoundRectangle 10"
                         BackgroundColor="#A9A9A9"
                         Padding="15,10">
-                        <Label x:Name="DisplayLabel"
+                        <Entry x:Name="DisplayLabel"
                                Text=""
                                FontSize="24"
                                FontFamily="Courier New"
                                HorizontalTextAlignment="Start"
                                VerticalTextAlignment="Center"
                                MinimumHeightRequest="80"
-                               LineBreakMode="WordWrap"/>
+                               Completed ="CalculateButton_Clicked"/>
                 </Border>
 
                 <!-- Result Display -->
@@ -44,7 +44,7 @@
 
                 <!-- Numpad Grid -->
                 <Grid ColumnDefinitions="*,*,*,*,*,*"
-                      RowDefinitions="*,*,*,*,*"
+                      RowDefinitions="*,*,*,*,*,*"
                       RowSpacing="10"
                       ColumnSpacing="10">
 
@@ -229,7 +229,7 @@
 
                         <Button Grid.Row="5"
                                 Grid.Column="0"
-                                Grid.ColumnSpan="2"
+                                Grid.ColumnSpan="3"
                                 Text="Helper"
                                 Clicked="HelperButton_Clicked"
                                 BackgroundColor="#512BD4"
@@ -237,7 +237,7 @@
 
                         <Button Grid.Row="5"
                                 Grid.Column="3"
-                                Grid.ColumnSpan="2"
+                                Grid.ColumnSpan="3"
                                 Text="Operators Details"
                                 Clicked="OperatorsButton_Clicked"
                                 BackgroundColor="#512BD4"

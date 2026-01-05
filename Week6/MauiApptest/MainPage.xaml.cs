@@ -108,6 +108,7 @@ namespace MauiApptest
                 double result = calculator.Calculate(tokens);
 
                 ShowResult($"Result: {result}", true);
+                DisplayLabel.Text = $"{result}";
             }
             catch (FormatException ex)
             {
