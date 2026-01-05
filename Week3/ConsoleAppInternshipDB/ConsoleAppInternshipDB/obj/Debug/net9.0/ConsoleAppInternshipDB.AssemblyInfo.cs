@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConsoleAppInternshipDB")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f1835c2edae26e8b8c162a78fd5ce2f801756642")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+caa0a055825076acdc25392d52cd667fecec694a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConsoleAppInternshipDB")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConsoleAppInternshipDB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

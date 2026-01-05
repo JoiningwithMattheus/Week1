@@ -362,9 +362,9 @@ namespace SIS
             Console.WriteLine("Enter Internship id:");
             int internshipId = int.Parse(Console.ReadLine()!);
             var contacts = await coordinator.GetContactPersonsAsync(internshipId);
-            if (contacts == null)
+            if (!contacts.Any())
             {
-                Console.WriteLine("Invalid ID");
+                Console.WriteLine("No contacts found.");
                 return;
             }
             foreach (var contact in contacts)

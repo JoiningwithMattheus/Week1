@@ -34,6 +34,8 @@ public class SisDbContext : DbContext
         modelBuilder.Entity<Organization>()
             .HasMany(o => o.Internships)
             .WithOne(i => i.Organization)
+            // .HasForeignKey(i => i.Id)
+            // .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
 
         // Make Period an owned/value object of Internship

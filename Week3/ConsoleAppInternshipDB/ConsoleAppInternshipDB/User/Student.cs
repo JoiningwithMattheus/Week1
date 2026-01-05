@@ -60,7 +60,6 @@ namespace SIS
             using var db = new SisDbContext();
             return await db.Internships
                 .Where(i =>
-                    i.Status == InternshipStatus.OPEN &&
                     i.Period.Year == period.Year &&
                     i.Period.Semester == period.Semester &&
                     (
