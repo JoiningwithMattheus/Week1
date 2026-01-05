@@ -16,7 +16,10 @@ namespace MauiApptest
         {
             if (sender is Button button)
             {
-                DisplayLabel.Text = calculator.OperationsHelpText;
+                foreach (var line in calculator.OperationsHelpText)
+                {
+                    DisplayLabel.Text += line + "\n";
+                }
                 HideResult();
             }
         }
@@ -25,7 +28,10 @@ namespace MauiApptest
         {
             if (sender is Button button)
             {
-                DisplayLabel.Text = calculator.SupportedOperators;
+                foreach (var op in calculator.SupportedOperators)
+                {
+                    DisplayLabel.Text += op + "\n";
+                }
                 HideResult();
             }
         }
