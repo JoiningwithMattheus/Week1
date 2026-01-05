@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace MauiApptest
 {
     public partial class MainPage : ContentPage
     {
         private RPNCalculator calculator = new RPNCalculator();
-        private CultureInfo culture = CultureInfo.InvariantCulture;
         
         public MainPage()
         {
@@ -25,7 +24,7 @@ namespace MauiApptest
 
         private void DecimalButton_Clicked(object sender, EventArgs e)
         {
-            DisplayLabel.Text += ".";
+            DisplayLabel.Text += ",";
             HideResult();
         }
 
@@ -103,8 +102,7 @@ namespace MauiApptest
             
             foreach (var part in parts)
             {
-                // Try parsing with invariant culture (uses . as decimal separator)
-                if (double.TryParse(part, NumberStyles.Any, CultureInfo.InvariantCulture, out double number))
+                if (double.TryParse(part, out double number))
                 {
                     tokens.Add(new Token(part, TokenType.Number));
                 }
@@ -134,7 +132,7 @@ namespace MauiApptest
         }
     }
 
-    // Calculator classes (add these to the same file or separate ones)
+    // Calculator classes (maybe make these seperate files later)
 
     public abstract class ICalculator
     {
