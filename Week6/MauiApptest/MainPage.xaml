@@ -230,7 +230,7 @@
                                 <Button Grid.Row="5"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="3"
-                                        Text="Helper"
+                                        Text="Oprator Details"
                                         Clicked="OperatorsButton_Clicked"
                                         BackgroundColor="#512BD4"
                                         TextColor="White"/>
@@ -238,7 +238,7 @@
                                 <Button Grid.Row="5"
                                         Grid.Column="3"
                                         Grid.ColumnSpan="3"
-                                        Text="Operators Details"
+                                        Text="Show Help"
                                         Clicked="ShowHelp_Clicked"
                                         BackgroundColor="#512BD4"
                                         TextColor="White"/>

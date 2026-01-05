@@ -27,12 +27,8 @@ public class RPNCalculator : ICalculator
 
         SupportedOperators = new List<string> {
                 "+","-","*","/","^","pow","mod",
-            "sqrt","cbrt","exp","ln","log10",
-            "sin","cos","tan","asin","acos","atan",
-            "sinh","cosh","tanh",
-            "abs","ceil","floor","round",
-            "min","max","fact",
-            "pi","e","deg","rad"
+            "sqrt","cbrt","exp","ln",
+            "sin","cos","tan","asin","acos","atan","round","e"
             };
     }
 
@@ -69,7 +65,7 @@ public class RPNCalculator : ICalculator
 
             // Binary operators
             if (op == "+" || op == "-" || op == "*" || op == "/" || op == "^" ||
-                op == "pow" || op == "mod" || op == "min" || op == "max")
+                op == "pow" || op == "mod")
             {
                 if (stack.Count < 2)
                     throw new FormatException($"Operator '{op}' needs at least two operands.");
@@ -105,11 +101,8 @@ public class RPNCalculator : ICalculator
             }
 
             // Unary operators
-            if (op == "sqrt" || op == "cbrt" || op == "exp" || op == "ln" || op == "log10" ||
-                op == "sin" || op == "cos" || op == "tan" || op == "asin" || op == "acos" || op == "atan" ||
-                op == "sinh" || op == "cosh" || op == "tanh" ||
-                op == "abs" || op == "ceil" || op == "floor" || op == "round" ||
-                op == "fact" || op == "deg" || op == "rad")
+            if (op == "sqrt" || op == "exp" || op == "ln" || op == "round" ||
+                op == "sin" || op == "cos" || op == "tan" || op == "asin" || op == "acos" || op == "atan")
             {
                 if (stack.Count < 1)
                     throw new FormatException($"Operator '{op}' needs at least one operand.");
