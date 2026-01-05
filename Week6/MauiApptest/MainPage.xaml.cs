@@ -12,7 +12,7 @@ namespace MauiApptest
             InitializeComponent();
         }
 
-        private void HelperButton_Clicked(object sender, EventArgs e)
+        private void OperatorsButton_Clicked(object sender, EventArgs e)
         {
             if (sender is Button button)
             {
@@ -24,14 +24,14 @@ namespace MauiApptest
             }
         }
 
-        private void OperatorsButton_Clicked(object sender, EventArgs e)
+        private void ShowHelp_Clicked(object sender, EventArgs e)
         {
             if (sender is Button button)
             {
-                foreach (var op in calculator.SupportedOperators)
-                {
-                    DisplayLabel.Text += op + "\n";
-                }
+                DisplayLabel.Text += "Enter expressions using RPN notation, for instance to calculate:\n";
+                DisplayLabel.Text += " 2 + 3 * 4\n";
+                DisplayLabel.Text += " enter '2 3 4 * +' \n";
+                DisplayLabel.Text += "enter (o)ps to see available operations";
                 HideResult();
             }
         }
