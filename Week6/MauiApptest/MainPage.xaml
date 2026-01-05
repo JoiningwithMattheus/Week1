@@ -80,7 +80,7 @@
                                 TextColor="White"
                                 FontSize="14"/>
                         <Button Grid.Row="0"
-                                Grid.Column="5"
+                                Grid.Column="6"
                                 Text="atan"
                                 Clicked="FunctionButton_Clicked"
                                 BackgroundColor="#FFA500"
@@ -121,7 +121,7 @@
                                 TextColor="White"
                                 FontSize="14"/>
                         <Button Grid.Row="1"
-                                Grid.Column="5"
+                                Grid.Column="6"
                                 Text="mod"
                                 Clicked="FunctionButton_Clicked"
                                 BackgroundColor="#FFA500"
@@ -220,7 +220,7 @@
                                 BackgroundColor="#9C27B0"
                                 TextColor="White"/>
                         <Button Grid.Row="4"
-                                Grid.Column="5"
+                                Grid.Column="6"
                                 Text="acos"
                                 Clicked="FunctionButton_Clicked"
                                 BackgroundColor="#FFA500"
